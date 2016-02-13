@@ -70,7 +70,7 @@ public class EventDialogFragment extends DialogFragment {
             }
         }
 
-        dialogBuilder.setPositiveButton( getResources().getString(R.string.string_enable_notif),
+        dialogBuilder.setPositiveButton(getResources().getString(R.string.string_enable_notif),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -109,64 +109,59 @@ public class EventDialogFragment extends DialogFragment {
         intent.putExtra("beginTime", startTime.getTimeInMillis());
         intent.putExtra("allDay", false);
         intent.putExtra("endTime", endTime.getTimeInMillis());
-        intent.putExtra("eventLocation",eventVenue);
+        intent.putExtra("eventLocation", eventVenue);
         intent.putExtra("title", eventDetails);
         startActivity(intent);
     }
 
     public int getMonth() {
-        int month = Integer.parseInt(eventDate.substring(3,5));
-        return month-1; //Calender starts counting at 0
-
+        int month = Integer.parseInt(eventDate.substring(3, 5).replaceAll("\\s", ""));
+        return month - 1; //Calender starts counting at 0
     }
 
     public int getYear() {
-        return Integer.parseInt(eventDate.substring(6,10));
+        return Integer.parseInt(eventDate.substring(6, 10).replaceAll("\\s", ""));
     }
 
     public int getDay() {
-        return Integer.parseInt(eventDate.substring(0,2));
+        return Integer.parseInt(eventDate.substring(0, 2).replaceAll("\\s", ""));
     }
 
     public int getStartHour() {
         int endIndex = eventStartTime.indexOf(":");
-        int hour = Integer.parseInt(eventStartTime.substring(0,endIndex));
+        int hour = Integer.parseInt(eventStartTime.substring(0, endIndex).replaceAll("\\s", ""));
 
         boolean isInEvening = eventStartTime.contains("PM");
 
-        if(hour != 12 && isInEvening)
-        {
-            hour+=12;
+        if (hour != 12 && isInEvening) {
+            hour += 12;
         }
-
         return hour;
     }
 
     public int getEndHour() {
         int endIndex = eventEndTime.indexOf(":");
-        int hour = Integer.parseInt(eventEndTime.substring(0,endIndex));
+        int hour = Integer.parseInt(eventEndTime.substring(0, endIndex).replaceAll("\\s", ""));
 
         boolean isInEvening = eventEndTime.contains("PM");
 
-        if(hour != 12 && isInEvening)
-        {
-            hour+=12;
+        if (hour != 12 && isInEvening) {
+            hour += 12;
         }
-
         return hour;
     }
 
     public int getStartMinute() {
-        int startIndex = eventStartTime.indexOf(":")+1;
-        int endIndex = startIndex+2;
+        int startIndex = eventStartTime.indexOf(":") + 1;
+        int endIndex = startIndex + 2;
 
-        return Integer.parseInt(eventStartTime.substring(startIndex,endIndex));
+        return Integer.parseInt(eventStartTime.substring(startIndex, endIndex).replaceAll("\\s", ""));
     }
 
     public int getEndMinute() {
-        int startIndex = eventEndTime.indexOf(":")+1;
-        int endIndex = startIndex+2;
+        int startIndex = eventEndTime.indexOf(":") + 1;
+        int endIndex = startIndex + 2;
 
-        return Integer.parseInt(eventEndTime.substring(startIndex,endIndex));
+        return Integer.parseInt(eventEndTime.substring(startIndex, endIndex).replaceAll("\\s", ""));
     }
 }
