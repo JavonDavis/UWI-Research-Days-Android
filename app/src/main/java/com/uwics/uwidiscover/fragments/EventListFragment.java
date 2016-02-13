@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.uwics.uwidiscover.R;
+import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ParseController;
 
@@ -40,7 +41,9 @@ public class EventListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         day = getArguments().getString("day");
+        ((HomeActivity) getActivity()).setActionBarTitle(getArguments().getString("wDay"));
     }
 
     @Nullable

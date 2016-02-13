@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.uwics.uwidiscover.R;
+import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.EventDialogFragment;
 import com.uwics.uwidiscover.fragments.EventListFragment;
@@ -45,6 +46,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        ((HomeActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.uwi_research_day));
     }
 
     @Nullable
@@ -195,6 +197,12 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((HomeActivity) getActivity()).setActionBarTitle(getResources().getString(R.string.uwi_research_day));
+    }
+
+    @Override
     public void onClick(View v) {
         Bundle bundle;
         EventListFragment eventListFragment;
@@ -203,7 +211,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
             case R.id.day_one_view_list_button:
                 bundle = new Bundle();
                 bundle.putString("day", "17/02/2016");
-
+                bundle.putString("wDay", "Feb 17, 2016");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()
@@ -213,7 +221,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
             case R.id.day_two_view_list_button:
                 bundle = new Bundle();
                 bundle.putString("day", "18/02/2016");
-
+                bundle.putString("wDay", "Feb 18, 2016");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()
@@ -223,7 +231,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
             case R.id.day_three_view_list_button:
                 bundle = new Bundle();
                 bundle.putString("day", "19/02/2016");
-
+                bundle.putString("wDay", "Feb 19, 2016");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()

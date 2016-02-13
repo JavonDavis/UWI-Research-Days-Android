@@ -280,6 +280,11 @@ public class HomeActivity extends AppCompatActivity
         mTitle = title;
     }
 
+    public void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(title);
+    }
+
     public interface Tags {
         String HUMANITIES = "humanities";
         String LAW = "law";
