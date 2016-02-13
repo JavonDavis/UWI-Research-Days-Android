@@ -64,6 +64,6 @@ public class Event extends ParseObject {
     }
 
     public void setEndTime(String endTime) {
-        put("end-time", endTime);
+        put("end_time", endTime);
     }
 }
