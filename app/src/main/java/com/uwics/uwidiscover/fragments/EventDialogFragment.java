@@ -1,4 +1,4 @@
-package com.uwics.uwidiscover.fragments.navdrawerfragments;
+package com.uwics.uwidiscover.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;

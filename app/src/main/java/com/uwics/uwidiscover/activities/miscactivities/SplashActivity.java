@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.uwics.uwidiscover.R;
-import com.uwics.uwidiscover.classes.Helper;
+import com.uwics.uwidiscover.utils.ConnectionHelper;
 
 /**
  * @author Howard Edwards
@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if(Helper.isNetworkAvailable(this)) {
+        if(ConnectionHelper.isNetworkAvailable(this)) {
             int secondsDelayed = 2;
             new Handler().postDelayed(new Runnable() {
                 @Override

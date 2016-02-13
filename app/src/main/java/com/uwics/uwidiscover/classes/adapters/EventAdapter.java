@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.models.Event;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.EventDialogFragment;
+import com.uwics.uwidiscover.fragments.EventDialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     public EventAdapter(Context context) {
         this.context = context;
         eventList = new ArrayList<>();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -69,10 +70,27 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
         return eventList.size();
     }
 
-    public void addEvents(List<Event> events) {
-        eventList.addAll(events);
+    public void addEvent(Event event) {
+        eventList.add(event);
         notifyDataSetChanged();
     }
+
+//    public Event removeItem(int position) {
+//        final Event model = eventList.remove(position);
+//        notifyItemRemoved(position);
+//        return model;
+//    }
+//
+//    public void addItem(int position, Event model) {
+//        eventList.add(position, model);
+//        notifyItemInserted(position);
+//    }
+//
+//    public void moveItem(int fromPosition, int toPosition) {
+//        final Event model = eventList.remove(fromPosition);
+//        eventList.add(toPosition, model);
+//        notifyItemMoved(fromPosition, toPosition);
+//    }
 
     public class EventHolder extends RecyclerView.ViewHolder {
         LinearLayout linearLayoutContainer;
