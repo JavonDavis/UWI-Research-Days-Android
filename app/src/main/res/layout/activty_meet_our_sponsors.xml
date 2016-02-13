@@ -53,7 +53,7 @@
         android:layout_below="@id/jipo"
         android:onClick="openSponsorLinks"
         android:src="@drawable/sponsor_scientific_research_council_banner"
-        android:tag="www.src.gov.jm/"
+        android:tag="http://src.gov.jm/"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -65,7 +65,7 @@
         android:layout_toRightOf="@id/scientific"
         android:onClick="openSponsorLinks"
         android:src="@drawable/sponsor_cardi_banner"
-        android:tag="www.cardi.org/"
+        android:tag="http://cardi.org/"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             android:onClick="openSponsorLinks"
             android:src="@drawable/sponsor_arrc_media_banner"
-            android:tag="www.arrc.media/"
+            android:tag="http://arrc.media/"
             tools:ignore="ContentDescription" />
 
         <ImageView
