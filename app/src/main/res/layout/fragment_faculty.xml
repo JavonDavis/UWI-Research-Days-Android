@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Announcement:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Sunt monses examinare fidelis, placidus impositioes. Fortis sensorems ducunt ad gallus."
+            android:textIsSelectable="true"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent" />
+
+    <include layout="@layout/gridview" />
+
+    <RelativeLayout
+        android:id="@+id/map_display_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <fragment
+            android:id="@+id/map_display"
+            android:name="com.uwics.uwidiscover.fragments.MapDisplayFragment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            tools:layout="@layout/fragment_map_display" />
+    </RelativeLayout>
+</LinearLayout>

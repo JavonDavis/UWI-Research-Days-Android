@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/see_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="end"
+            android:text="@string/string_see_location"
+            android:textColor="@color/blue" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@color/LightBlue"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/project_media_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/project_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/text_placeholder"
+            android:textIsSelectable="true"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
+        <Button
+            android:id="@+id/leave_feedback_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leave Feedback" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback:"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:background="@color/LightBlue">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/project_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/back_to_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_up_blue_900_24dp"
+            android:drawableStart="@drawable/ic_keyboard_arrow_up_blue_900_24dp"
+            android:gravity="start"
+            android:text="@string/string_back_to_top"
+            android:textColor="@color/blue" />
+
+        <fragment
+            android:id="@+id/map_display"
+            android:name="com.uwics.uwidiscover.fragments.MapDisplayFragment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            tools:layout="@layout/fragment_map_display" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryMedSci">#9C27B0</color>
+    <color name="colorPrimaryDarkMedSci">#7B1FA2</color>
+    <color name="colorPrimaryLightMedSci">#E1BEE7</color>
+    <color name="colorAccentMedSci">#9E9E9E</color>
+    <color name="colorPrimaryTextMedSci">#212121</color>
+    <color name="colorSecondaryTextMedSci">#727272</color>
+    <color name="colorIconsMedSci">#FFFFFF</color>
+    <color name="colorDividerMedSci">#B6B6B6</color>
+
+    <color name="colorPrimarySciTech">#FFA000</color>
+    <color name="colorPrimaryDarkSciTech">#FF8F00</color>
+    <color name="colorPrimaryLightSciTech">#FFECB3</color>
+    <color name="colorAccentSciTech">#795548</color>
+    <color name="colorPrimaryTextSciTech">#212121</color>
+    <color name="colorSecondaryTextSciTech">#727272</color>
+    <color name="colorIconsSciTech">#212121</color>
+    <color name="colorDividerSciTech">#B6B6B6</color>
+
+    <color name="colorPrimarySoSci">#FF5722</color>
+    <color name="colorPrimaryDarkSoSci">#E64A19</color>
+    <color name="colorPrimaryLightSoSci">#FFCCBC</color>
+    <color name="colorAccentSoSci">#FFEB3B</color>
+    <color name="colorPrimaryTextSoSci">#212121</color>
+    <color name="colorSecondaryTextSoSci">#727272</color>
+    <color name="colorIconsSoSci">#FFFFFF</color>
+    <color name="colorDividerSoSci">#B6B6B6</color>
+
+    <color name="colorPrimaryHumEd">#2196F3</color>
+    <color name="colorPrimaryDarkHumEd">#1976D2</color>
+    <color name="colorPrimaryLightHumEd">#BBDEFB</color>
+    <color name="colorAccentHumEd">#009688</color>
+    <color name="colorPrimaryTextHumEd">#212121</color>
+    <color name="colorSecondaryTextHumEd">#727272</color>
+    <color name="colorIconsHumEd">#FFFFFF</color>
+    <color name="colorDividerHumEd">#B6B6B6</color>
+
+    <color name="colorPrimaryLaw">#607D8B</color>
+    <color name="colorPrimaryDarkLaw">#455A64</color>
+    <color name="colorPrimaryLightLaw">#CFD8DC</color>
+    <color name="colorAccentLaw">#7C4DFF</color>
+    <color name="colorPrimaryTextLaw">#212121</color>
+    <color name="colorSecondaryTextLaw">#727272</color>
+    <color name="colorIconsLaw">#FFFFFF</color>
+    <color name="colorDividerLaw">#B6B6B6</color>
+</resources>

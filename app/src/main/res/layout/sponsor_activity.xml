@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:color="@color/colorPrimary"
+        android:radius="5dp"
+        app:dd_horizontalSpacing="4dp"
+        app:dd_numDots="5"
+        app:dd_scaleMultiplier="1.5" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/progress_bar">
+
+        <ImageView
+            android:id="@+id/vision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/sponsor_vision_2030_banner"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/cfp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/vision"
+            android:layout_toRightOf="@id/vision"
+            android:src="@drawable/sponsor_uwicfptv_banner"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/jipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/cfp"
+            android:layout_toEndOf="@id/vision"
+            android:layout_toRightOf="@id/vision"
+            android:src="@drawable/sponsor_jipo_banner"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/scientific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/jipo"
+            android:src="@drawable/sponsor_scientific_research_council_banner"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/cardi"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_below="@id/jipo"
+            android:layout_toEndOf="@id/scientific"
+            android:layout_toRightOf="@id/scientific"
+            android:src="@drawable/sponsor_cardi_banner"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/hawkeye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/scientific"
+            android:src="@drawable/sponsor_hawkeye_banner"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hawkeye"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/arrc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/sponsor_arrc_media_banner"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/epic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/sponsor_epic_technologies_banner"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/recycler_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_above="@id/progress_bar" />-->
+</RelativeLayout>

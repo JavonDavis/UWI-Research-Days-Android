@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.HomeActivity">
+
+    <group android:id="@+id/schedule_of_events_group">
+        <item
+            android:id="@+id/nav_schedule"
+            android:enabled="true"
+            android:icon="@drawable/ic_schedule_black_24dp"
+            android:title="@string/string_title_schedule_of_events" />
+    </group>
+
+    <item android:title="@string/string_faculties">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_fac_humed"
+                    android:enabled="false"
+                    android:icon="@mipmap/ic_faculty_humed_img"
+                    android:title="@string/faculty_humanities" />
+                <item
+                    android:id="@+id/nav_fac_law"
+                    android:enabled="false"
+                    android:icon="@mipmap/ic_faculty_law_img"
+                    android:title="@string/faculty_law" />
+                <item
+                    android:id="@+id/nav_fac_medsci"
+                    android:enabled="false"
+                    android:icon="@mipmap/ic_faculty_medsci_img"
+                    android:title="@string/faculty_medical_sciences" />
+                <item
+                    android:id="@+id/nav_fac_scitech"
+                    android:enabled="false"
+                    android:icon="@mipmap/ic_faculty_scitech_img"
+                    android:title="@string/faculty_science_technology" />
+                <item
+                    android:id="@+id/nav_fac_sosci"
+                    android:enabled="false"
+                    android:icon="@mipmap/ic_faculty_sosci_img"
+                    android:title="@string/faculty_social_sciences" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/string_events">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/nav_seminars"
+                    android:enabled="false"
+                    android:title="@string/string_seminars" />
+                <item
+                    android:id="@+id/nav_tours"
+                    android:enabled="false"
+                    android:title="@string/string_tours" />
+                <item
+                    android:id="@+id/nav_live"
+                    android:enabled="true"
+                    android:title="@string/string_live" />
+            </group>
+        </menu>
+    </item>
+
+
+    <group android:id="@+id/app_misc_stuff_group">
+        <item
+            android:id="@+id/nav_settings"
+            android:enabled="false"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/string_settings" />
+        <item
+            android:id="@+id/nav_help"
+            android:enabled="false"
+            android:icon="@drawable/ic_help_outline_black_24dp"
+            android:title="@string/string_help_feedback" />
+        <item
+            android:id="@+id/nav_about_uwi"
+            android:enabled="true"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/string_about_uwi" />
+    </group>
+</menu>

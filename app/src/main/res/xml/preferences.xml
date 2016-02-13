@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:title="Your Name"
+        android:key="username"
+        android:summary="Provide a username"
+        android:id="@+id/et_username"
+        android:defaultValue="anonymous"
+        android:dialogTitle="Change Username"/>
+
+    <SwitchPreference android:title="All Notifications"
+        android:defaultValue="true"
+        android:summary="This option if selected allows you to get the receive notifications for saved events"
+        android:key="allNotificaitons" />
+
+</PreferenceScreen>
