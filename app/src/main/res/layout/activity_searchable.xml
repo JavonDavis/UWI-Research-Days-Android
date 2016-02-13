@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/container"
     tools:context="com.uwics.uwidiscover.activities.miscactivities.SearchableActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_results"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
     <TextView
         android:id="@+id/tv_error"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:text="@string/string_no_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
-
-
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/string_no_results"
+        android:textSize="16sp"
+        android:visibility="gone" />
 </android.support.design.widget.CoordinatorLayout>

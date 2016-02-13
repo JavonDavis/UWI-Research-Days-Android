@@ -71,5 +71,7 @@
     <string name="string_connection_try_again">Try Again</string>
     <string name="filter">Filter</string>
     <string name="string_no_results">Unable to load results</string>
+    <string name="string_meet_our_sponsors">Meet Our Sponsors</string>
+    <string name="title_activity_meet_our_sponsors">Meet Our Sponsors</string>
 
 </resources>
