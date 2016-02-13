@@ -59,7 +59,7 @@ public class ParseController extends Application {
                 try {
                     return format.parse(lhs.getStartTime()).compareTo(format.parse(rhs.getStartTime()));
                 } catch (ParseException e) {
-                    throw new IllegalArgumentException(e);
+                    return -1;
                 }
             }
         });
