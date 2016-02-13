@@ -4,7 +4,6 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,11 +26,16 @@ import butterknife.ButterKnife;
 
 public class SearchableActivity extends AppCompatActivity {
 
-    @Bind(R.id.container) CoordinatorLayout mCoordinatorLayout;
-    @Bind(R.id.search_results) RecyclerView mRecyclerView;
-    @Bind(R.id.tv_error) TextView mErrorView;
+    @Bind(R.id.container)
+    CoordinatorLayout mCoordinatorLayout;
+    @Bind(R.id.search_results)
+    RecyclerView mRecyclerView;
+    @Bind(R.id.tv_error)
+    TextView mErrorView;
 
     private EventAdapter mEventAdapter;
+    private List<Event> resultEventList;
+    private List<Event> eventList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class SearchableActivity extends AppCompatActivity {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        eventList = ((ParseController) getApplicationContext()).getEventList();
         ButterKnife.bind(this);
         setupViews();
         handleIntent(getIntent());
@@ -50,16 +55,26 @@ public class SearchableActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-
+//        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+//
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//
+//        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
+//
+//        searchView.setSearchableInfo(searchManager
+//                .getSearchableInfo(componentName));
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_filter:
-                Snackbar.make(mCoordinatorLayout, "Filer", Snackbar.LENGTH_SHORT).show();
-                return true;
+//            case R.id.action_filter:
+//                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.action_search:
+//                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -91,13 +106,13 @@ public class SearchableActivity extends AppCompatActivity {
 
     private void createQueuryRequest(String searchString) {
         searchString = searchString.toLowerCase();
-        List<Event> eventList = ((ParseController) getApplicationContext()).getEventList();
-        List<Event> resultEventList = new ArrayList<>();
+        resultEventList = new ArrayList<>();
         for (Event e : eventList) {
-            if (e.getDetails().toLowerCase().contains(searchString) || e.getVenue().toLowerCase().contains(searchString)
+            if (e.getDetails().toLowerCase().contains(searchString)
+                    || e.getVenue().toLowerCase().contains(searchString)
                     || e.getType().toLowerCase().contains(searchString)) {
                 resultEventList.add(e);
-                mEventAdapter.addEvents(resultEventList);
+                mEventAdapter.addEvent(e);
             }
         }
         if (resultEventList.size() == 0)

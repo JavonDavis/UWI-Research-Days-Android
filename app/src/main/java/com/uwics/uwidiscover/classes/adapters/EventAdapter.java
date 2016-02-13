@@ -28,6 +28,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
     public EventAdapter(Context context) {
         this.context = context;
         eventList = new ArrayList<>();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -69,8 +70,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
         return eventList.size();
     }
 
-    public void addEvents(List<Event> events) {
-        eventList.addAll(events);
+    public void addEvent(Event event) {
+        eventList.add(event);
         notifyDataSetChanged();
     }
 
