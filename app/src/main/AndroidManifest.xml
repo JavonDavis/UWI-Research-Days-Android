@@ -50,6 +50,15 @@
             android:label="@string/uwi_research_day"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".activities.MeetOurSponsorsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.HomeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.HomeActivity" />
+        </activity>
+        <activity
             android:name=".activities.miscactivities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".activities.HomeActivity"
