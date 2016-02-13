@@ -76,7 +76,7 @@ public class SponsorActivity extends AppCompatActivity {
                 @Override
                 public void done(List<Event> events, ParseException e) {
                     if (e == null) {
-                        for (Event event: events) {
+                        for (Event event : events) {
                             schedule.add(event);
                         }
                         ((ParseController) getApplicationContext()).setEventList(schedule);
