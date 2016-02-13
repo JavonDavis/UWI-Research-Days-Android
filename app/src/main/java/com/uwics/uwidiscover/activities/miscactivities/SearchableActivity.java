@@ -34,7 +34,6 @@ public class SearchableActivity extends AppCompatActivity {
     TextView mErrorView;
 
     private EventAdapter mEventAdapter;
-    private List<Event> resultEventList;
     private List<Event> eventList;
 
     @Override
@@ -99,14 +98,15 @@ public class SearchableActivity extends AppCompatActivity {
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            createQueuryRequest(query);
+            String searchString = intent.getStringExtra(SearchManager.QUERY);
+            setTitle(searchString);
+            createQueuryRequest(searchString);
         }
     }
 
     private void createQueuryRequest(String searchString) {
         searchString = searchString.toLowerCase();
-        resultEventList = new ArrayList<>();
+        List<Event> resultEventList = new ArrayList<>();
         for (Event e : eventList) {
             if (e.getDetails().toLowerCase().contains(searchString)
                     || e.getVenue().toLowerCase().contains(searchString)

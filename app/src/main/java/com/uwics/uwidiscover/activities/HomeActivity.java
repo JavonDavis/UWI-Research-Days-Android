@@ -153,18 +153,11 @@ public class HomeActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat
-                .getActionView(searchMenuItem);
 
-
-        SearchManager searchManager = (SearchManager)
-                getSystemService(Context.SEARCH_SERVICE);
-
-        ComponentName componentName =
-                new ComponentName(this, SearchableActivity.class);
-
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(componentName));
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
 
         return super.onCreateOptionsMenu(menu);
     }
