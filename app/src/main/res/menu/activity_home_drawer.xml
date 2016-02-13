@@ -65,15 +65,20 @@
 
     <group android:id="@+id/app_misc_stuff_group">
         <item
+            android:id="@+id/nav_sponsors"
+            android:enabled="true"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/string_meet_our_sponsors" />
+        <item
             android:id="@+id/nav_settings"
             android:enabled="false"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="@string/string_settings" />
-        <item
-            android:id="@+id/nav_help"
-            android:enabled="false"
-            android:icon="@drawable/ic_help_outline_black_24dp"
-            android:title="@string/string_help_feedback" />
+        <!--<item-->
+        <!--android:id="@+id/nav_help"-->
+        <!--android:enabled="false"-->
+        <!--android:icon="@drawable/ic_help_outline_black_24dp"-->
+        <!--android:title="@string/string_help_feedback" />-->
         <item
             android:id="@+id/nav_about_uwi"
             android:enabled="true"

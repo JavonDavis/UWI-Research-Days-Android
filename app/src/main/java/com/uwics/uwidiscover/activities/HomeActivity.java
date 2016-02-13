@@ -27,7 +27,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
-import com.uwics.uwidiscover.activities.miscactivities.HelpAndFeedbackActivity;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SearchableActivity;
 import com.uwics.uwidiscover.classes.models.Faculty;
@@ -155,12 +154,27 @@ public class HomeActivity extends AppCompatActivity
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+//        searchView.setOnQueryTextListener(new SearchQueryListener());
+
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         ComponentName componentName = new ComponentName(this, SearchableActivity.class);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
 
         return super.onCreateOptionsMenu(menu);
     }
+
+//    private class SearchQueryListener implements SearchView.OnQueryTextListener {
+//
+//        @Override
+//        public boolean onQueryTextSubmit(String query) {
+//            return false;
+//        }
+//
+//        @Override
+//        public boolean onQueryTextChange(String newText) {
+//            return true;
+//        }
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -228,9 +242,12 @@ public class HomeActivity extends AppCompatActivity
                 intent = new Intent(this, MyPreferencesActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_help:
-                intent = new Intent(this, HelpAndFeedbackActivity.class);
-                startActivity(intent);
+//            case R.id.nav_help:
+//                intent = new Intent(this, HelpAndFeedbackActivity.class);
+//                startActivity(intent);
+//                break;
+            case R.id.nav_sponsors:
+                startActivity(new Intent(this, MeetOurSponsorsActivity.class));
                 break;
             case R.id.nav_about_uwi:
                 intent = new Intent(this, AboutUWIActivity.class);

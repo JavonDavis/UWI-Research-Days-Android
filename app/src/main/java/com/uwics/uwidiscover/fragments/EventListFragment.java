@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.models.Event;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.EventDialogFragment;
 import com.uwics.uwidiscover.utils.ParseController;
 
 import java.text.SimpleDateFormat;

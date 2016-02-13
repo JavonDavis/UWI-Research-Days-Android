@@ -54,15 +54,6 @@ public class SearchableActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-//        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-//
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//
-//        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
-//
-//        searchView.setSearchableInfo(searchManager
-//                .getSearchableInfo(componentName));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -100,11 +91,11 @@ public class SearchableActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String searchString = intent.getStringExtra(SearchManager.QUERY);
             setTitle(searchString);
-            createQueuryRequest(searchString);
+            createQueryRequest(searchString);
         }
     }
 
-    private void createQueuryRequest(String searchString) {
+    private void createQueryRequest(String searchString) {
         searchString = searchString.toLowerCase();
         List<Event> resultEventList = new ArrayList<>();
         for (Event e : eventList) {
