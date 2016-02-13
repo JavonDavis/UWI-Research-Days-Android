@@ -85,16 +85,17 @@ public class SearchableActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            createParseRequest(query);
+            createQueuryRequest(query);
         }
     }
 
-    private void createParseRequest(String searchString) {
+    private void createQueuryRequest(String searchString) {
+        searchString = searchString.toLowerCase();
         List<Event> eventList = ((ParseController) getApplicationContext()).getEventList();
         List<Event> resultEventList = new ArrayList<>();
         for (Event e : eventList) {
-            if (e.getDetails().contains(searchString) || e.getVenue().contains(searchString)
-                    || e.getType().contains(searchString)) {
+            if (e.getDetails().toLowerCase().contains(searchString) || e.getVenue().toLowerCase().contains(searchString)
+                    || e.getType().toLowerCase().contains(searchString)) {
                 resultEventList.add(e);
                 mEventAdapter.addEvents(resultEventList);
             }
