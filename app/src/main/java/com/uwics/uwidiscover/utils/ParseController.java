@@ -40,15 +40,11 @@ public class ParseController extends Application {
         this.eventList = eventList;
 
         for (Event e : eventList) {
-            if (e.getStartTime().contains("AM"))
-                e.setStartTime(e.getStartTime().replace("AM", " AM"));
-            else
-                e.setStartTime(e.getStartTime().replace("PM", " PM"));
+            if (e.getStartTime().contains("AM")) e.setStartTime(e.getStartTime().replace("AM", " AM"));
+            else e.setStartTime(e.getStartTime().replace("PM", " PM"));
 
-            if (e.getEndTime().contains("AM"))
-                e.setEndTime(e.getEndTime().replace("AM", " AM"));
-            else
-                e.setEndTime(e.getEndTime().replace("PM", " PM"));
+            if (e.getEndTime().contains("AM")) e.setEndTime(e.getEndTime().replace("AM", " AM"));
+            else e.setEndTime(e.getEndTime().replace("PM", " PM"));
         }
 
         Collections.sort(eventList, new Comparator<Event>() {
