@@ -1,45 +1,30 @@
 package com.uwics.uwidiscover.fragments.navdrawerfragments;
 
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.NotificationCompat;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.uwics.uwidiscover.R;
-import com.uwics.uwidiscover.activities.miscactivities.NotificationReceiver;
+
+import java.util.Calendar;
 
 /**
  * @author Howard Edwards
+ * @author Javon Davis
  */
 public class EventDialogFragment extends DialogFragment {
 
-    private ImageView eventBookmarkImage;
-    private boolean isBookmarked = false; // TODO: Add boolean flag to Event class???
-    private String notifStatus;
     private String eventStartTime;
     private String eventEndTime;
     private String eventDate;
     private String eventDetails;
-    private String eventFaculty;
     private String eventVenue;
-    private String eventType;
-    private String eventCategory;
-
-    private AlertDialog dialog;
 
     @NonNull
     @Override
@@ -51,9 +36,9 @@ public class EventDialogFragment extends DialogFragment {
         eventEndTime = getArguments().getString("eventEndTime");
         eventDate = getArguments().getString("eventDate");
         eventDetails = getArguments().getString("eventDetails");
-        eventFaculty = getArguments().getString("eventFaculty");
+        String eventFaculty = getArguments().getString("eventFaculty");
         eventVenue = getArguments().getString("eventVenue");
-        eventType = getArguments().getString("eventType");
+        String eventType = getArguments().getString("eventType");
 
         TextView eventStartTimeText = (TextView) rootView.findViewById(R.id.event_start_time);
         TextView eventEndTimeText = (TextView) rootView.findViewById(R.id.event_end_time);
@@ -62,15 +47,12 @@ public class EventDialogFragment extends DialogFragment {
         TextView eventVenueText = (TextView) rootView.findViewById(R.id.event_venue);
         TextView eventTypeText = (TextView) rootView.findViewById(R.id.event_type);
 
-        eventBookmarkImage = (ImageView) rootView.findViewById(R.id.bookmark_icon);
-
         eventStartTimeText.setText(eventStartTime);
         eventEndTimeText.setText(eventEndTime);
         eventDetailsText.setText(eventDetails);
         eventFacultyText.setText(eventFaculty);
         eventVenueText.setText(eventVenue);
         eventTypeText.setText(eventType);
-//        eventCategoryText.setText(eventCategory);
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
         dialogBuilder.setView(rootView);
@@ -87,14 +69,12 @@ public class EventDialogFragment extends DialogFragment {
                     break;
             }
         }
-        // TODO: Evaluate what isBookmarked should be ; when we start saving event bookmarked state
-        dialogBuilder.setPositiveButton(notifStatus = isBookmarked ?
-                        getResources().getString(R.string.string_disable_notif)
-                        : getResources().getString(R.string.string_enable_notif),
+
+        dialogBuilder.setPositiveButton( getResources().getString(R.string.string_enable_notif),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        setReminder();
                     }
                 })
                 .setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -103,57 +83,90 @@ public class EventDialogFragment extends DialogFragment {
                         dialog.dismiss();
                     }
                 });
-        dialog = dialogBuilder.create();
+        AlertDialog dialog = dialogBuilder.create();
         dialog.show();
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setUpNotification();
-            }
-        });
         return dialog;
     }
 
-    private void setUpNotification() {
-        if (isBookmarked) {
-            eventBookmarkImage.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
-            Toast.makeText(getActivity(), "Reminder removed", Toast.LENGTH_SHORT).show();
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(
-                    getActivity().getResources().getString(R.string.string_enable_notif));
-        } else {
-            // showNotification();
-            eventBookmarkImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
-            Toast.makeText(getActivity(), "Reminder set", Toast.LENGTH_SHORT).show();
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setText(
-                    getActivity().getResources().getString(R.string.string_disable_notif));
-        }
-        isBookmarked = !isBookmarked;
+    private void setReminder() {
+
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.MONTH, getMonth());
+        startTime.set(Calendar.YEAR, getYear());
+        startTime.set(Calendar.DAY_OF_MONTH, getDay());
+        startTime.set(Calendar.HOUR_OF_DAY, getStartHour());
+        startTime.set(Calendar.MINUTE, getStartMinute());
+
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(Calendar.MONTH, getMonth());
+        endTime.set(Calendar.YEAR, getYear());
+        endTime.set(Calendar.DAY_OF_MONTH, getDay());
+        endTime.set(Calendar.HOUR_OF_DAY, getEndHour());
+        endTime.set(Calendar.MINUTE, getEndMinute());
+
+        Intent intent = new Intent(Intent.ACTION_EDIT);
+        intent.setType("vnd.android.cursor.item/event");
+        intent.putExtra("beginTime", startTime.getTimeInMillis());
+        intent.putExtra("allDay", false);
+        intent.putExtra("endTime", endTime.getTimeInMillis());
+        intent.putExtra("eventLocation",eventVenue);
+        intent.putExtra("title", eventDetails);
+        startActivity(intent);
     }
 
-    private void showNotification() {
-//        eventBookmarkImage.setImageResource(R.drawable.ic_bookmark_black_24dp);
+    public int getMonth() {
+        int month = Integer.parseInt(eventDate.substring(3,5));
+        return month-1; //Calender starts counting at 0
 
-        Intent intent = new Intent(getActivity(), NotificationReceiver.class);
-        PendingIntent pIntent = PendingIntent.getActivity(getActivity(), (int) System.currentTimeMillis(), intent, 0);
-        Uri soundNotifUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+    }
 
-        Notification notification = new NotificationCompat.Builder(getActivity())
-                .setContentTitle(eventType)
-                .setContentText(eventStartTime + " - " + eventEndTime).setSmallIcon(R.mipmap.ic_notif)
-                .setContentIntent(pIntent)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(eventType + " @ "
-                        + eventVenue
-//                        + " ("
-//                        + eventFaculty + ")"
-                        + " happening soon!\n"
-                        + eventStartTime + " - " + eventEndTime))
-                .addAction(0, "Show Details", pIntent)
-                .setSound(soundNotifUri)
-                .build();
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+    public int getYear() {
+        return Integer.parseInt(eventDate.substring(6,10));
+    }
 
-        NotificationManager notificationManager =
-                (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
+    public int getDay() {
+        return Integer.parseInt(eventDate.substring(0,2));
+    }
+
+    public int getStartHour() {
+        int endIndex = eventStartTime.indexOf(":");
+        int hour = Integer.parseInt(eventStartTime.substring(0,endIndex));
+
+        boolean isInEvening = eventStartTime.contains("PM");
+
+        if(hour != 12 && isInEvening)
+        {
+            hour+=12;
+        }
+
+        return hour;
+    }
+
+    public int getEndHour() {
+        int endIndex = eventEndTime.indexOf(":");
+        int hour = Integer.parseInt(eventEndTime.substring(0,endIndex));
+
+        boolean isInEvening = eventEndTime.contains("PM");
+
+        if(hour != 12 && isInEvening)
+        {
+            hour+=12;
+        }
+
+        return hour;
+    }
+
+    public int getStartMinute() {
+        int startIndex = eventStartTime.indexOf(":")+1;
+        int endIndex = startIndex+2;
+
+        return Integer.parseInt(eventStartTime.substring(startIndex,endIndex));
+    }
+
+    public int getEndMinute() {
+        int startIndex = eventEndTime.indexOf(":")+1;
+        int endIndex = startIndex+2;
+
+        return Integer.parseInt(eventEndTime.substring(startIndex,endIndex));
     }
 }
