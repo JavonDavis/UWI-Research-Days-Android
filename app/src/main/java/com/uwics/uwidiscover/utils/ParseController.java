@@ -55,9 +55,6 @@ public class ParseController extends Application {
             @Override
             public int compare(Event lhs, Event rhs) {
                 try {
-                    if (lhs.getStartTime().contains("  ")) {
-                        System.out.println(lhs.getStartTime());
-                    }
                     return format.parse(lhs.getStartTime()).compareTo(format.parse(rhs.getStartTime()));
                 } catch (ParseException e) {
                     return -1;
