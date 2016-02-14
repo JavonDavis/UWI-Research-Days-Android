@@ -35,12 +35,11 @@ public class LiveActivity extends AppCompatActivity {
         WebView mWebView = (WebView) findViewById(R.id.webview);
         mWebView.setWebViewClient(new WebClient());
 
-
-//         mWebView.loadUrl("http://tv.mona.uwi.edu/");
-//        mWebView.loadUrl("http://player.twitch.tv/?volume=0.5&channel=esl_sc2&time=14");
-
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+//        mWebView.loadUrl("http://tv.mona.uwi.edu/");
+//        mWebView.loadUrl("http://player.twitch.tv/?volume=0.5&channel=esl_sc2&time=14");
         mWebView.loadUrl("http://www.uwicfptv.com/livestream");
     }
 

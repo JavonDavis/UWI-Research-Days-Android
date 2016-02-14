@@ -73,7 +73,8 @@
             android:id="@+id/nav_settings"
             android:enabled="false"
             android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/string_settings" />
+            android:title="@string/string_settings"
+            android:visible="false" />
         <!--<item-->
         <!--android:id="@+id/nav_help"-->
         <!--android:enabled="false"-->
