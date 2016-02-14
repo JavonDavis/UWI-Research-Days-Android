@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity
         } else {
             setTitle(savedInstanceState.getCharSequence("title"));
         }
-        initialParseRequests();
+//        initialParseRequests();
     }
 
     private void initialParseRequests() {

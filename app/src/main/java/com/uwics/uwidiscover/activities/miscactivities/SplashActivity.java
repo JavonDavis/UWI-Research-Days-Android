@@ -2,6 +2,7 @@ package com.uwics.uwidiscover.activities.miscactivities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,14 +19,20 @@ import com.uwics.uwidiscover.utils.ConnectionHelper;
  */
 public class SplashActivity extends AppCompatActivity {
 
+    final String FROMLOCALDATASTORE = "FromLocalDatastoreFile";
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences(FROMLOCALDATASTORE, 0);
+//        System.out.println("FROMDATASTORE BOOL: " + sharedPreferences.getBoolean("from_datastore", false));
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if (ConnectionHelper.isNetworkAvailable(this)) {
+        if (ConnectionHelper.isNetworkAvailable(this) || sharedPreferences.getBoolean("from_datastore", false)) {
             int secondsDelayed = 2;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -49,12 +56,12 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                     System.exit(0);
                 }
-            }).setOnDismissListener(new DialogInterface.OnDismissListener() {
+            })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     SplashActivity.this.recreate();
                 }
-            }).show().setCanceledOnTouchOutside(false);
+            })*/.show().setCanceledOnTouchOutside(false);
         }
     }
 
