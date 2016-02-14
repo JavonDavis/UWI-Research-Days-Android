@@ -66,7 +66,7 @@
     <string name="string_enable_notif">Set Reminder</string>
     <string name="string_disable_notif">Disable Reminder</string>
     <string name="string_research_day_site">https://www.mona.uwi.edu/researchdays/</string>
-    <string name="string_connection_error_message">Unable to download Schedule Information. Check your internet connection.</string>
+    <string name="string_connection_error_message">Unable to download Schedule information. Check your internet connection.</string>
     <string name="string_connection_error_title">Connection Error</string>
     <string name="string_connection_try_again">Try Again</string>
     <string name="filter">Filter</string>
@@ -74,5 +74,5 @@
     <string name="string_meet_our_sponsors">Meet Our Sponsors</string>
     <string name="title_activity_meet_our_sponsors">Meet Our Sponsors</string>
     <string name="string_exit">Exit</string>
-
+    <string name="string_select_sponsor_banner">Select a banner to visit the page of the Organization/Company/Group</string>
 </resources>

@@ -46,7 +46,7 @@ public class MeetOurSponsorsActivity extends AppCompatActivity {
         if (getActionBar() != null)
             getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        new AlertDialog.Builder(this).setMessage("Click a banner visit the page of the respective Organization/Company/Group")
+        new AlertDialog.Builder(this).setMessage(getString(R.string.string_select_sponsor_banner))
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.ok, null)
                 .show();
