@@ -36,6 +36,10 @@ public class SearchableActivity extends AppCompatActivity {
     private EventAdapter mEventAdapter;
     private List<Event> eventList;
 
+    /* On API 17, the handleIntent() method was being fired twice, causing duplicate search results,
+     so just a boolean to prevent that */
+    private boolean queryComplete = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,10 +92,12 @@ public class SearchableActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String searchString = intent.getStringExtra(SearchManager.QUERY);
-            setTitle(searchString);
-            createQueryRequest(searchString);
+        if (!queryComplete) {
+            if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+                String searchString = intent.getStringExtra(SearchManager.QUERY);
+                setTitle(searchString);
+                createQueryRequest(searchString);
+            }
         }
     }
 
@@ -108,5 +114,6 @@ public class SearchableActivity extends AppCompatActivity {
         }
         if (resultEventList.size() == 0)
             mErrorView.setVisibility(View.VISIBLE);
+        queryComplete = true;
     }
 }
