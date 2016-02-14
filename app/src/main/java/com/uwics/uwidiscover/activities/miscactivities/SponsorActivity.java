@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -83,17 +82,26 @@ public class SponsorActivity extends AppCompatActivity {
                         ((ParseController) getApplicationContext()).setEventList(schedule);
                         delay();
                     } else {
-                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity);
-                        dialogBuilder.setTitle(getString(R.string.string_connection_error_title));
-                        dialogBuilder.setMessage(R.string.string_connection_error_message);
-                        dialogBuilder.setNeutralButton(R.string.string_connection_try_again,
-                                new DialogInterface.OnClickListener() {
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SponsorActivity.this);
+                        dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+                                .setMessage(R.string.string_connection_error_message)
+                                .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        activity.recreate();
+                                        SponsorActivity.this.recreate();
                                     }
-                                });
-                        dialogBuilder.show();
+                                }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                System.exit(0);
+                            }
+                        }).setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                SponsorActivity.this.recreate();
+                            }
+                        }).show().setCanceledOnTouchOutside(false);
                     }
                 }
             });
@@ -111,6 +119,12 @@ public class SponsorActivity extends AppCompatActivity {
                 finish();
             }
         }, secondsDelayed * 1000);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        System.exit(0);
     }
 
     public class RecyclerViewDisabler implements RecyclerView.OnItemTouchListener {
