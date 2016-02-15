@@ -1,13 +1,19 @@
 package com.uwics.uwidiscover.activities.miscactivities;
 
 import android.app.SearchManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +22,7 @@ import android.widget.TextView;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.adapters.EventAdapter;
 import com.uwics.uwidiscover.classes.models.Event;
+import com.uwics.uwidiscover.fragments.FilterDialogFragment;
 import com.uwics.uwidiscover.utils.ParseController;
 
 import java.util.ArrayList;
@@ -24,7 +31,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SearchableActivity extends AppCompatActivity {
+public class SearchableActivity extends AppCompatActivity
+        implements FilterDialogFragment.FilterDialogListener {
 
     @Bind(R.id.container)
     CoordinatorLayout mCoordinatorLayout;
@@ -58,17 +66,30 @@ public class SearchableActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
+        setupSearView(menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void setupSearView(Menu menu) {
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
+//        searchView.setOnQueryTextListener(new SearchQueryListener());
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_filter:
-//                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
-//                return true;
-//            case R.id.action_search:
-//                return true;
+            case R.id.action_filter:
+                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_search:
+                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -115,5 +136,20 @@ public class SearchableActivity extends AppCompatActivity {
         if (resultEventList.size() == 0)
             mErrorView.setVisibility(View.VISIBLE);
         queryComplete = true;
+    }
+
+    public void showFilterDialog() {
+        FilterDialogFragment.newInstance()
+                .show(getSupportFragmentManager(), FilterDialogFragment.TAG);
+    }
+
+    @Override
+    public void onDialogPositiveClick() {
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        dialog.dismiss();
     }
 }

@@ -194,9 +194,6 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Intent intent;
-        Fragment fragment = null;
-
         switch (item.getItemId()) {
             case R.id.nav_park:
                 launchFragment(getString(R.string.science_experience_park), ScienceParkFragment.newInstance(), Tags.PARK);
@@ -225,12 +222,10 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_tours:
                 break;
             case R.id.nav_live:
-                intent = new Intent(this, LiveActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, LiveActivity.class));
                 break;
             case R.id.nav_settings:
-                intent = new Intent(this, MyPreferencesActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, MyPreferencesActivity.class));
                 break;
 //            case R.id.nav_help:
 //                intent = new Intent(this, HelpAndFeedbackActivity.class);
@@ -240,8 +235,7 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(new Intent(this, MeetOurSponsorsActivity.class));
                 break;
             case R.id.nav_about_uwi:
-                intent = new Intent(this, AboutUWIActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, AboutUWIActivity.class));
                 break;
         }
 
