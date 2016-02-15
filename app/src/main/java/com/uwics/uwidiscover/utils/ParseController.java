@@ -31,7 +31,6 @@ public class ParseController extends Application {
         ParseObject.registerSubclass(Event.class);
         ParseObject.registerSubclass(Faculty.class);
         Parse.initialize(this);
-
         initializeDeviceId();
     }
 
