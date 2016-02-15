@@ -25,10 +25,11 @@ import java.util.GregorianCalendar;
 
 public class LiveActivity extends AppCompatActivity {
 
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 17);
+    private final static Calendar CURRENT_DAY = Calendar.getInstance();
+    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 14);
     private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
     private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
-    private final Calendar CURRENT_DAY = Calendar.getInstance();
+
     private WebView mWebView;
     private ProgressBar progressBar;
     private Spinner streamChannelSpinner;
@@ -79,111 +80,116 @@ public class LiveActivity extends AppCompatActivity {
     private void showStream(int channelIndex) {
         // TODO: Gonna probably run this through an Async after testing
         // TODO: Do some check to show unavailable stream if user is on screen and the stream ends
-        int rDay = currResearchDay();
-        String streamUrl = validTimeForStream(rDay, channelIndex);
-        if (rDay != -1) {
-            switch (channelIndex) {
-                case 0:
-                    switch (rDay) {
-                        case 1:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 2:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 3:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                    }
-                    break;
-                case 1:
-                    switch (rDay) {
-                        case 1:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 2:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 3:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                    }
-                    break;
-                case 2:
-                    switch (rDay) {
-                        case 1:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 2:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 3:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                    }
-                    break;
-                case 3:
-                    switch (rDay) {
-                        case 1:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 2:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                        case 3:
-                            if (streamUrl != null) {
-                                noStreamTextView.setVisibility(View.GONE);
-                                mWebView.setVisibility(View.VISIBLE);
-                                mWebView.loadUrl(streamUrl);
-                            }
-                            break;
-                    }
-                    break;
+        int i = currResearchDay();
+        if (i != 0) {
+            String streamUrl = validLinkToStreamForTime(i, channelIndex);
+            if (streamUrl != null) {
+                noStreamTextView.setVisibility(View.GONE);
+                mWebView.setVisibility(View.VISIBLE);
+                mWebView.loadUrl(streamUrl);
             }
+//            switch (channelIndex) {
+//                case 0:
+//                    switch (rDay) {
+//                        case 1:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 2:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 3:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                    }
+//                    break;
+//                case 1:
+//                    switch (rDay) {
+//                        case 1:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 2:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 3:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                    }
+//                    break;
+//                case 2:
+//                    switch (rDay) {
+//                        case 1:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 2:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 3:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                    }
+//                    break;
+//                case 3:
+//                    switch (rDay) {
+//                        case 1:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 2:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                        case 3:
+//                            if (streamUrl != null) {
+//                                noStreamTextView.setVisibility(View.GONE);
+//                                mWebView.setVisibility(View.VISIBLE);
+//                                mWebView.loadUrl(streamUrl);
+//                            }
+//                            break;
+//                    }
+//                    break;
+//            }
         } else {
             mWebView.setVisibility(View.GONE);
             noStreamTextView.setVisibility(View.VISIBLE);
@@ -197,8 +203,15 @@ public class LiveActivity extends AppCompatActivity {
             return 2;
         } else if (isResearchDay(DAY_THREE)) {
             return 3;
+        } else {
+            return 0;
         }
-        return -1;
+    }
+
+    private boolean isResearchDay(Calendar rDay) {
+        // TODO: DAY_OF_YEAR being incremented/decremented by 1 when it gets here after initial run. Figure out why
+        return (CURRENT_DAY.get(Calendar.YEAR) == rDay.get(Calendar.YEAR))
+                && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == rDay.get(Calendar.DAY_OF_YEAR));
     }
 
     /* D1
@@ -222,79 +235,74 @@ public class LiveActivity extends AppCompatActivity {
     (11:45 (12 - 12:45) 1) : C2 - S2
     3 - ?? : C1 - S3 */
     @Nullable
-    private String validTimeForStream(int rDay, int cStream) {
-        if (rDay == 1) {
-            if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDay, 9, 0)) && CURRENT_DAY.before(tempDay(rDay, 12, 0))) {
+    private String validLinkToStreamForTime(int rDayIndex, int cStream) {
+        if (rDayIndex == 1) {
+            if (cStream == 0) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 20, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
                     return getString(R.string.string_d1_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 12, 0)) && CURRENT_DAY.before(tempDay(rDay, 12, 45))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 45))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d1_s3_c1);
                 }
-            } else if (cStream == 2) {
-                if (CURRENT_DAY.after(tempDay(rDay, 10, 30)) && CURRENT_DAY.before(tempDay(rDay, 3, 0))) {
+            } else if (cStream == 1) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 20, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
                     return getString(R.string.string_d1_s2_c2);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 5, 16)) && CURRENT_DAY.before(tempDay(rDay, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 5, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d1_s5_c2);
                 }
-            } else if (cStream == 3) {
-                if (CURRENT_DAY.after(tempDay(rDay, 2, 0)) && CURRENT_DAY.before(tempDay(rDay, 7, 0))) {
+            } else if (cStream == 2) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 2, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 7, 0))) {
                     return getString(R.string.string_d1_s4_c3);
                 }
-            } else if (cStream == 4) {
+            } else if (cStream == 3) {
                 return null;
             }
-        } else if (rDay == 2) {
-            if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDay, 11, 0)) && CURRENT_DAY.before(tempDay(rDay, 1, 30))) {
+        } else if (rDayIndex == 2) {
+            if (cStream == 0) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 30))) {
                     return getString(R.string.string_d2_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 1, 30)) && CURRENT_DAY.before(tempDay(rDay, 4, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 1, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 4, 0))) {
                     return getString(R.string.string_d2_s3_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 4, 0)) && CURRENT_DAY.before(tempDay(rDay, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 4, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d2_s6_c1);
                 }
-            } else if (cStream == 2) {
-                if (CURRENT_DAY.after(tempDay(rDay, 12, 0)) && CURRENT_DAY.before(tempDay(rDay, 3, 0))) {
+            } else if (cStream == 1) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
                     return getString(R.string.string_d2_s2_c2);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 4, 0)) && CURRENT_DAY.before(tempDay(rDay, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 4, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d2_s7_c2);
                 }
 
-            } else if (cStream == 3) {
-                if (CURRENT_DAY.after(tempDay(rDay, 1, 30)) && CURRENT_DAY.before(tempDay(rDay, 5, 0))) {
+            } else if (cStream == 2) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 1, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 0))) {
                     return getString(R.string.string_d2_s4_c3);
                 }
-            } else if (cStream == 4) {
-                if (CURRENT_DAY.after(tempDay(rDay, 2, 30)) && CURRENT_DAY.before(tempDay(rDay, 5, 30))) {
+            } else if (cStream == 3) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 2, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 30))) {
                     return getString(R.string.string_d2_s5_c4);
                 }
             }
-        } else if (rDay == 3) {
-            if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDay, 10, 0)) && CURRENT_DAY.before(tempDay(rDay, 12, 0))) {
+        } else if (rDayIndex == 3) {
+            if (cStream == 0) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d3_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDay, 3, 0)) && CURRENT_DAY.before(tempDay(rDay, 5, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 3, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 0))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d3_s3_c1);
                 }
-            } else if (cStream == 2) {
-                if (CURRENT_DAY.after(tempDay(rDay, 12, 0)) && CURRENT_DAY.before(tempDay(rDay, 12, 45))) {
+            } else if (cStream == 1) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 45))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d3_s2_c2);
                 }
-            } else if (cStream == 3) {
+            } else if (cStream == 2) {
                 return null;
-            } else if (cStream == 4) {
+            } else if (cStream == 3) {
                 return null;
             }
         }
         return null;
-    }
-
-    private boolean isResearchDay(Calendar rDay) {
-        return CURRENT_DAY.get(Calendar.YEAR) == rDay.get(Calendar.YEAR) &&
-                CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == rDay.get(Calendar.DAY_OF_YEAR);
     }
 
     @Nullable
