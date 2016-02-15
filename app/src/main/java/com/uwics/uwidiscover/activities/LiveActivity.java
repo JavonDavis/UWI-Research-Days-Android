@@ -26,9 +26,17 @@ import java.util.GregorianCalendar;
 public class LiveActivity extends AppCompatActivity {
 
     private final static Calendar CURRENT_DAY = Calendar.getInstance();
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 14);
+    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 15);
     private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
     private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
+
+    private final static int DAY_ONE_DAY_OF_YEAR = DAY_ONE.get(Calendar.DAY_OF_YEAR);
+    private final static int DAY_TWO_DAY_OF_YEAR = DAY_TWO.get(Calendar.DAY_OF_YEAR);
+    private final static int DAY_THREE_DAY_OF_YEAR = DAY_THREE.get(Calendar.DAY_OF_YEAR);
+
+    private final static int DAY_ONE_YEAR = DAY_ONE.get(Calendar.YEAR);
+    private final static int DAY_TWO_YEAR = DAY_TWO.get(Calendar.YEAR);
+    private final static int DAY_THREE_YEAR = DAY_THREE.get(Calendar.YEAR);
 
     private WebView mWebView;
     private ProgressBar progressBar;
@@ -80,7 +88,8 @@ public class LiveActivity extends AppCompatActivity {
     private void showStream(int channelIndex) {
         // TODO: Gonna probably run this through an Async after testing
         // TODO: Do some check to show unavailable stream if user is on screen and the stream ends
-        int i = currResearchDay();
+//        int i = currResearchDay();
+        int i = isResearchDayAlt();
         if (i != 0) {
             String streamUrl = validLinkToStreamForTime(i, channelIndex);
             if (streamUrl != null) {
@@ -98,15 +107,26 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     private int currResearchDay() {
-        if (isResearchDay(DAY_ONE)) {
+//        if (isResearchDay(DAY_ONE)) {
+//            return 1;
+//        } else if (isResearchDay(DAY_TWO)) {
+//            return 2;
+//        } else if (isResearchDay(DAY_THREE)) {
+//            return 3;
+//        } else {
+//            return 0;
+//        }
+        return isResearchDayAlt();
+    }
+
+    private int isResearchDayAlt() {
+        if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_ONE_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_ONE_DAY_OF_YEAR)) {
             return 1;
-        } else if (isResearchDay(DAY_TWO)) {
+        } else if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_TWO_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_TWO_DAY_OF_YEAR)) {
             return 2;
-        } else if (isResearchDay(DAY_THREE)) {
+        } else if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_THREE_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_THREE_DAY_OF_YEAR)) {
             return 3;
-        } else {
-            return 0;
-        }
+        } else return 0;
     }
 
     private boolean isResearchDay(Calendar rDay) {
@@ -146,7 +166,7 @@ public class LiveActivity extends AppCompatActivity {
                     return getString(R.string.string_d1_s3_c1);
                 }
             } else if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 3, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 3, 0))) {
                     return getString(R.string.string_d1_s2_c2);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 5, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d1_s5_c2);
@@ -212,18 +232,18 @@ public class LiveActivity extends AppCompatActivity {
         switch (cal) {
             case 1:
                 temp = DAY_ONE;
-                temp.add(Calendar.HOUR_OF_DAY, hourOfDay);
-                temp.add(Calendar.MINUTE, min);
+                temp.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                temp.set(Calendar.MINUTE, min);
                 return temp;
             case 2:
                 temp = DAY_TWO;
-                temp.add(Calendar.HOUR_OF_DAY, hourOfDay);
-                temp.add(Calendar.MINUTE, min);
+                temp.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                temp.set(Calendar.MINUTE, min);
                 return temp;
             case 3:
                 temp = DAY_THREE;
-                temp.add(Calendar.HOUR_OF_DAY, hourOfDay);
-                temp.add(Calendar.MINUTE, min);
+                temp.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                temp.set(Calendar.MINUTE, min);
                 return temp;
             default:
                 return null;
