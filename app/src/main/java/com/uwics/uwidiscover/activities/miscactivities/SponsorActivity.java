@@ -122,7 +122,7 @@ public class SponsorActivity extends AppCompatActivity {
     }
 
     private void delay() {
-        int secondsDelayed = 2;
+        int secondsDelayed = 1;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -75,4 +75,23 @@
     <string name="title_activity_meet_our_sponsors">Meet Our Sponsors</string>
     <string name="string_exit">Exit</string>
     <string name="string_select_sponsor_banner">Select a banner to visit the page of the Organization/Company/Group</string>
+
+    <string name="string_d1_s1_c1">http://tv.mona.uwi.edu/research-days-2016-official-opening-ceremony</string>
+    <string name="string_d1_s2_c2">http://tv.mona.uwi.edu/research-days-2016-principal039s-tourthe-main-exhibition</string>
+    <string name="string_d1_s3_c1">http://tv.mona.uwi.edu/research-days-2016-fhe-lunch-hour-concert</string>
+    <string name="string_d1_s4_c3">http://tv.mona.uwi.edu/research-days-2016-mona-association-post-graduate-students-intercampus-postgraduate-debate-finals</string>
+    <string name="string_d1_s5_c2">http://tv.mona.uwi.edu/research-days-2016-main-public-lecture-medical-marijuana-and-its-role-clinical-healthcare-and-resear</string>
+
+    <string name="string_d2_s1_c1">http://tv.mona.uwi.edu/research-days-2016-lunch-hour-concert</string>
+    <string name="string_d2_s2_c2">http://tv.mona.uwi.edu/research-days-2016-department-government-book-launch</string>
+    <string name="string_d2_s3_c1">http://tv.mona.uwi.edu/research-days-2016-department-chemistry-fst-urd-lecture-series</string>
+    <string name="string_d2_s4_c3">http://tv.mona.uwi.edu/research-days-2016-department-literatures-english-poetry-clash-2016</string>
+    <string name="string_d2_s5_c4">http://tv.mona.uwi.edu/research-days-2016-dburnz-research-days-celebrity-tent-tour</string>
+    <string name="string_d2_s6_c1">http://tv.mona.uwi.edu/research-days-2016-american-friends-jamaica-cobb-family-foundation-lecture</string>
+    <string name="string_d2_s7_c2">http://tv.mona.uwi.edu/research-days-2016-public-lecture-misconduct-public-office</string>
+
+    <string name="string_d3_s1_c1">http://tv.mona.uwi.edu/research-days-2016-launch-quotbraadkyaas-jamiekanquot-app</string>
+    <string name="string_d3_s2_c2">http://tv.mona.uwi.edu/research-days-2016-lunch-hour-concert-0</string>
+    <string name="string_d3_s3_c1">http://tv.mona.uwi.edu/research-days-2016-research-days-celebrity-tent-tour</string>
+    <string name="string_no_stream_available">No Stream currently available on this channel. Please check another or try again later</string>
 </resources>
