@@ -87,109 +87,10 @@ public class LiveActivity extends AppCompatActivity {
                 noStreamTextView.setVisibility(View.GONE);
                 mWebView.setVisibility(View.VISIBLE);
                 mWebView.loadUrl(streamUrl);
+            } else {
+                mWebView.setVisibility(View.GONE);
+                noStreamTextView.setVisibility(View.VISIBLE);
             }
-//            switch (channelIndex) {
-//                case 0:
-//                    switch (rDay) {
-//                        case 1:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 2:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 3:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                    }
-//                    break;
-//                case 1:
-//                    switch (rDay) {
-//                        case 1:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 2:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 3:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                    }
-//                    break;
-//                case 2:
-//                    switch (rDay) {
-//                        case 1:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 2:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 3:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                    }
-//                    break;
-//                case 3:
-//                    switch (rDay) {
-//                        case 1:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 2:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                        case 3:
-//                            if (streamUrl != null) {
-//                                noStreamTextView.setVisibility(View.GONE);
-//                                mWebView.setVisibility(View.VISIBLE);
-//                                mWebView.loadUrl(streamUrl);
-//                            }
-//                            break;
-//                    }
-//                    break;
-//            }
         } else {
             mWebView.setVisibility(View.GONE);
             noStreamTextView.setVisibility(View.VISIBLE);
@@ -238,14 +139,14 @@ public class LiveActivity extends AppCompatActivity {
     private String validLinkToStreamForTime(int rDayIndex, int cStream) {
         if (rDayIndex == 1) {
             if (cStream == 0) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 20, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 9, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
                     return getString(R.string.string_d1_s1_c1);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 45))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d1_s3_c1);
                 }
             } else if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 20, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 3, 0))) {
                     return getString(R.string.string_d1_s2_c2);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 5, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d1_s5_c2);
