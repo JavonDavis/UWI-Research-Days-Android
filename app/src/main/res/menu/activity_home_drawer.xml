@@ -11,7 +11,7 @@
             android:title="@string/string_title_schedule_of_events" />
 
         <item
-            android:id="nav_park"
+            android:id="@+id/nav_park"
             android:title="Science Experience Park"
             android:enabled="true"
             />

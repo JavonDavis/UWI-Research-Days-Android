@@ -94,4 +94,8 @@
     <string name="string_d3_s2_c2">http://tv.mona.uwi.edu/research-days-2016-lunch-hour-concert-0</string>
     <string name="string_d3_s3_c1">http://tv.mona.uwi.edu/research-days-2016-research-days-celebrity-tent-tour</string>
     <string name="string_no_stream_available">No Stream currently available on this channel. Please check another or try again later</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="science_experience_park">Science Experience Park</string>
 </resources>

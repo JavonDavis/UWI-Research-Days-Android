@@ -36,6 +36,7 @@ import com.uwics.uwidiscover.fragments.navdrawerfragments.LawFacultyFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.MedSciFacultyFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.ScheduleFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.SciTechFacultyFragment;
+import com.uwics.uwidiscover.fragments.navdrawerfragments.ScienceParkFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.SeminarFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.SoSciFacultyFragment;
 
@@ -194,48 +195,32 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         Intent intent;
+        Fragment fragment = null;
+
         switch (item.getItemId()) {
+            case R.id.nav_park:
+                launchFragment(getString(R.string.science_experience_park), ScienceParkFragment.newInstance(), Tags.PARK);
+                break;
             case R.id.nav_schedule:
-                setTitle(getString(R.string.uwi_research_day));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new ScheduleFragment())
-                        .commit();
+                launchFragment(getString(R.string.uwi_research_day), new ScheduleFragment());
                 break;
             case R.id.nav_fac_humed:
-                setTitle(getString(R.string.faculty_humanities));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new HumEdFacultyFragment(), Tags.HUMANITIES)
-                        .commit();
+                launchFragment(getString(R.string.faculty_humanities), new HumEdFacultyFragment(), Tags.HUMANITIES);
                 break;
             case R.id.nav_fac_law:
-                setTitle(getString(R.string.faculty_law));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new LawFacultyFragment(), Tags.LAW)
-                        .commit();
+                launchFragment(getString(R.string.faculty_law), new LawFacultyFragment(), Tags.LAW);
                 break;
             case R.id.nav_fac_medsci:
-                setTitle(getString(R.string.faculty_medical_sciences));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new MedSciFacultyFragment(), Tags.MEDSCI)
-                        .commit();
+                launchFragment(getString(R.string.faculty_medical_sciences), new MedSciFacultyFragment(), Tags.MEDSCI);
                 break;
             case R.id.nav_fac_scitech:
-                setTitle(getString(R.string.faculty_science_technology));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SciTechFacultyFragment(), Tags.SCITECH)
-                        .commit();
+                launchFragment(getString(R.string.faculty_science_technology), new SciTechFacultyFragment(), Tags.SCITECH);
                 break;
             case R.id.nav_fac_sosci:
-                setTitle(getString(R.string.faculty_social_sciences));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SoSciFacultyFragment(), Tags.SOSCI)
-                        .commit();
+                launchFragment(getString(R.string.faculty_social_sciences), new SoSciFacultyFragment(), Tags.SOSCI);
                 break;
             case R.id.nav_seminars:
-                setTitle(getString(R.string.uwi_research_day));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SeminarFragment())
-                        .commit();
+                launchFragment(getString(R.string.uwi_research_day), new SeminarFragment());
                 break;
             case R.id.nav_tours:
                 break;
@@ -259,9 +244,21 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void launchFragment(String title, Fragment fragment) {
+        this.launchFragment(title, fragment, null);
+    }
+
+    private void launchFragment(String title, Fragment fragment, String tag) {
+        setTitle(title);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 
     private void disableNavigationViewScrollbars(NavigationView navigationView) {
@@ -291,6 +288,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public interface Tags {
+        String PARK = "science_experience_park";
         String HUMANITIES = "humanities";
         String LAW = "law";
         String MEDSCI = "medsci";
