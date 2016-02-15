@@ -3,4 +3,57 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/start_time"
+            android:inputType="time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/end_time"
+            android:inputType="time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wednesday"
+        android:id="@+id/wednesday"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/thursday"
+        android:id="@+id/thursday"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/friday"
+        android:id="@+id/friday"
+        android:layout_gravity="center_horizontal"
+        android:checked="true"
+        />
+
 </LinearLayout>

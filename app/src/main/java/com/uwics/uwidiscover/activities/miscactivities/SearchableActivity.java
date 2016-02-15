@@ -27,6 +27,7 @@ import com.uwics.uwidiscover.utils.ParseController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,12 +35,9 @@ import butterknife.ButterKnife;
 public class SearchableActivity extends AppCompatActivity
         implements FilterDialogFragment.FilterDialogListener {
 
-    @Bind(R.id.container)
-    CoordinatorLayout mCoordinatorLayout;
-    @Bind(R.id.search_results)
-    RecyclerView mRecyclerView;
-    @Bind(R.id.tv_error)
-    TextView mErrorView;
+    @Bind(R.id.container) CoordinatorLayout mCoordinatorLayout;
+    @Bind(R.id.search_results) RecyclerView mRecyclerView;
+    @Bind(R.id.tv_error) TextView mErrorView;
 
     private EventAdapter mEventAdapter;
     private List<Event> eventList;
@@ -87,6 +85,7 @@ public class SearchableActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.action_filter:
                 Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
+                showFilterDialog();
                 return true;
             case R.id.action_search:
                 return true;
@@ -144,7 +143,7 @@ public class SearchableActivity extends AppCompatActivity
     }
 
     @Override
-    public void onDialogPositiveClick() {
+    public void onDialogPositiveClick(DialogFragment dialog, Map<String, String>filterValues) {
 
     }
 
