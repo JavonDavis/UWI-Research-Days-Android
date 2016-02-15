@@ -143,7 +143,9 @@ public class SearchableActivity extends AppCompatActivity
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, Map<String, String>filterValues) {
+    public void onDialogPositiveClick(DialogFragment dialog, Map<String, String> filterValues) {
+        dialog.dismiss();
+
 
     }
 

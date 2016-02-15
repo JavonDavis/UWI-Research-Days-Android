@@ -15,8 +15,6 @@ import android.widget.EditText;
 
 import com.uwics.uwidiscover.R;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -85,7 +83,7 @@ public class FilterDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         mListener.onDialogNegativeClick(FilterDialogFragment.this);
                     }
-                })
+                });
 
         return super.onCreateDialog(savedInstanceState);
     }
