@@ -26,7 +26,7 @@ import java.util.GregorianCalendar;
 public class LiveActivity extends AppCompatActivity {
 
     private final static Calendar CURRENT_DAY = Calendar.getInstance();
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 15);
+    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 17);
     private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
     private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
 
@@ -74,6 +74,7 @@ public class LiveActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int channelIndex = parent.getSelectedItemPosition();
+                // TODO: Put delay to show that stream has changed
                 showStream(channelIndex);
             }
 
@@ -89,7 +90,7 @@ public class LiveActivity extends AppCompatActivity {
         // TODO: Gonna probably run this through an Async after testing
         // TODO: Do some check to show unavailable stream if user is on screen and the stream ends
 //        int i = currResearchDay();
-        int i = isResearchDayAlt();
+        int i = researchDayIndex();
         if (i != 0) {
             String streamUrl = validLinkToStreamForTime(i, channelIndex);
             if (streamUrl != null) {
@@ -116,10 +117,10 @@ public class LiveActivity extends AppCompatActivity {
 //        } else {
 //            return 0;
 //        }
-        return isResearchDayAlt();
+        return researchDayIndex();
     }
 
-    private int isResearchDayAlt() {
+    private int researchDayIndex() {
         if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_ONE_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_ONE_DAY_OF_YEAR)) {
             return 1;
         } else if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_TWO_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_TWO_DAY_OF_YEAR)) {
@@ -161,18 +162,18 @@ public class LiveActivity extends AppCompatActivity {
             if (cStream == 0) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 9, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
                     return getString(R.string.string_d1_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 45))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 13, 0))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d1_s3_c1);
                 }
             } else if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 3, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
                     return getString(R.string.string_d1_s2_c2);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 5, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 17, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
                     return getString(R.string.string_d1_s5_c2);
                 }
             } else if (cStream == 2) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 2, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 7, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 14, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 19, 0))) {
                     return getString(R.string.string_d1_s4_c3);
                 }
             } else if (cStream == 3) {
@@ -180,26 +181,25 @@ public class LiveActivity extends AppCompatActivity {
             }
         } else if (rDayIndex == 2) {
             if (cStream == 0) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 30))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 11, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 13, 30))) {
                     return getString(R.string.string_d2_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 1, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 4, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 13, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 16, 0))) {
                     return getString(R.string.string_d2_s3_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 4, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 16, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
                     return getString(R.string.string_d2_s6_c1);
                 }
             } else if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 23, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
                     return getString(R.string.string_d2_s2_c2);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 4, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 16, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
                     return getString(R.string.string_d2_s7_c2);
                 }
-
             } else if (cStream == 2) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 1, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 13, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 0))) {
                     return getString(R.string.string_d2_s4_c3);
                 }
             } else if (cStream == 3) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 2, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 30))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 14, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 30))) {
                     return getString(R.string.string_d2_s5_c4);
                 }
             }
@@ -208,7 +208,7 @@ public class LiveActivity extends AppCompatActivity {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d3_s1_c1);
-                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 3, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 5, 0))) {
+                } else if (CURRENT_DAY.after(tempDay(rDayIndex, 15, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 0))) {
                     // TODO: Verify this time
                     return getString(R.string.string_d3_s3_c1);
                 }
