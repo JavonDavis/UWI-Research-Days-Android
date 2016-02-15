@@ -71,7 +71,6 @@ public class HomeActivity extends AppCompatActivity
         String deviceId = (String) ParseInstallation.getCurrentInstallation().get("unique_id");
         Toast.makeText(this, "token: " + deviceId, Toast.LENGTH_LONG).show();
 
-
 //        initialParseRequests();
     }
 
