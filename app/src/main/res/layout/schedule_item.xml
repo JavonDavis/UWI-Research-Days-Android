@@ -123,5 +123,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/schedule_item_separator" />
+        android:background="@drawable/faded_line_separator" />
 </LinearLayout>

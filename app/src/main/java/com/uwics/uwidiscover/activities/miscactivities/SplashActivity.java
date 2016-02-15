@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         if (ConnectionHelper.isNetworkAvailable(this) || sharedPreferences.getBoolean("from_datastore", false)) {
-            int secondsDelayed = 2;
+            int secondsDelayed = 1;
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
