@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
@@ -66,6 +67,10 @@ public class HomeActivity extends AppCompatActivity
         } else {
             setTitle(savedInstanceState.getCharSequence("title"));
         }
+
+        String deviceId = (String) ParseInstallation.getCurrentInstallation().get("unique_id");
+        Toast.makeText(this, "token: " + deviceId, Toast.LENGTH_LONG).show();
+
 //        initialParseRequests();
     }
 

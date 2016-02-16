@@ -1,8 +1,10 @@
 package com.uwics.uwidiscover.utils;
 
 import android.app.Application;
+import android.provider.Settings;
 
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.classes.models.Faculty;
@@ -29,6 +31,20 @@ public class ParseController extends Application {
         ParseObject.registerSubclass(Event.class);
         ParseObject.registerSubclass(Faculty.class);
         Parse.initialize(this);
+
+        initializeDeviceId();
+    }
+
+    private void initializeDeviceId() {
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        String deviceId = installation.getString("unique_id");
+
+        if ("".equals(deviceId) | deviceId == null) {
+            deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+
+            installation.put("unique_id", deviceId);
+            installation.saveInBackground();
+        }
     }
 
     public List<Event> getEventList() {
