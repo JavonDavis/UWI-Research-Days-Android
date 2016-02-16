@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="150dp"
+    android:orientation="vertical" android:layout_width="250dp"
     android:layout_height="match_parent">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        >
 
         <EditText
             android:id="@+id/start_time"
             android:inputType="time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Start Time"
+            >
         </EditText>
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        >
 
         <EditText
             android:id="@+id/end_time"
             android:inputType="time"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="End Time"
+            >
         </EditText>
 
     </android.support.design.widget.TextInputLayout>

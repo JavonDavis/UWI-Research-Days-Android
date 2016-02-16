@@ -144,29 +144,24 @@ public class SearchableActivity extends AppCompatActivity
     public void onDialogPositiveClick(DialogFragment dialog, Map<String, String> filterValues) {
         dialog.dismiss();
 
-        List<Event> filteredEvents = eventList;
+        List<Event> filteredEvents = new ArrayList<>();
 
-        for (Event event: filteredEvents) {
-            if (!filterValues.containsKey("wednesday") && event.getDate().equals("18/2/2016")) filteredEvents.remove(event);
-            if (!filterValues.containsKey("thursday") && event.getDate().equals("19/2/2016")) filteredEvents.remove(event);
-            if (!filterValues.containsKey("friday") && event.getDate().equals("20/2/2016")) filteredEvents.remove(event);
+        for (Event event: eventList) {
+            if (!filterValues.containsKey("wednesday") && event.getDate().equals("18/2/2016")) filteredEvents.add(event);
+            else if (!filterValues.containsKey("thursday") && event.getDate().equals("19/2/2016")) filteredEvents.add(event);
+            else if (!filterValues.containsKey("friday") && event.getDate().equals("20/2/2016")) filteredEvents.add(event);
+        }
+
+        if (filterValues.containsKey("start_time")) {
 
         }
 
-        /*
-            Spaghetti code
-         */
-//        for (Event event: eventList) {
-//            if (filterValues.containsKey("wednesday") && event.getDate().equals("18/2/2016")) {
-//                filteredEvents.add(event);
-//            } else if (filterValues.containsKey("thursday")  && event.getDate().equals("19/2/2016")) {
-//                filteredEvents.add(event);
-//            } else if (filterValues.containsKey("friday")  && event.getDate().equals("20/2/2016")) {
-//                filteredEvents.add(event);
-//            }
-
+        if (filterValues.containsKey("end_time")) {
 
         }
+
+        mEventAdapter.setEvents(filteredEvents);
+
     }
 
     @Override
