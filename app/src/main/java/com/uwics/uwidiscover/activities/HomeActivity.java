@@ -24,21 +24,14 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SearchableActivity;
 import com.uwics.uwidiscover.classes.models.Faculty;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.HumEdFacultyFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.LawFacultyFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.MedSciFacultyFragment;
+import com.uwics.uwidiscover.fragments.EventListFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.ScheduleFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.SciTechFacultyFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.ScienceParkFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.SeminarFragment;
-import com.uwics.uwidiscover.fragments.navdrawerfragments.SoSciFacultyFragment;
 
 import java.util.List;
 
@@ -190,32 +183,94 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Bundle bundle;
+        EventListFragment eventListFragment;
         switch (item.getItemId()) {
-            case R.id.nav_park:
+            /*case R.id.nav_park:
                 launchFragment(getString(R.string.science_experience_park), ScienceParkFragment.newInstance(), Tags.PARK);
-                break;
+                break;*/
             case R.id.nav_schedule:
                 launchFragment(getString(R.string.uwi_research_day), new ScheduleFragment());
                 break;
             case R.id.nav_fac_humed:
-                launchFragment(getString(R.string.faculty_humanities), new HumEdFacultyFragment(), Tags.HUMANITIES);
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.HUMANITIES);
+                bundle.putString("wDay",getString(R.string.faculty_humanities));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_humanities), eventListFragment);
                 break;
             case R.id.nav_fac_law:
-                launchFragment(getString(R.string.faculty_law), new LawFacultyFragment(), Tags.LAW);
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.LAW);
+                bundle.putString("wDay",getString(R.string.faculty_law));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_law), eventListFragment);
                 break;
             case R.id.nav_fac_medsci:
-                launchFragment(getString(R.string.faculty_medical_sciences), new MedSciFacultyFragment(), Tags.MEDSCI);
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.MEDICAL_SCIENCES);
+                bundle.putString("wDay",getString(R.string.faculty_medical_sciences));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_medical_sciences), eventListFragment);
                 break;
             case R.id.nav_fac_scitech:
-                launchFragment(getString(R.string.faculty_science_technology), new SciTechFacultyFragment(), Tags.SCITECH);
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.SCIENCE_TECHNOLOGY);
+                bundle.putString("wDay",getString(R.string.faculty_science_technology));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_science_technology), eventListFragment);
                 break;
             case R.id.nav_fac_sosci:
-                launchFragment(getString(R.string.faculty_social_sciences), new SoSciFacultyFragment(), Tags.SOSCI);
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.SOCIAL_SCIENCES);
+                bundle.putString("wDay",getString(R.string.faculty_social_sciences));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_social_sciences), eventListFragment);
+                break;
+            case R.id.nav_fac_igds:
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.INSTITUTE_FOR_GENDER_STUDIES);
+                bundle.putString("wDay",getString(R.string.faculty_institute_for_gender_and_development_studies));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_institute_for_gender_and_development_studies), eventListFragment);
+                break;
+            case R.id.nav_fac_mss:
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.MONA_SOCIAL_SERVICES);
+                bundle.putString("wDay",getString(R.string.faculty_mona_social_services));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_mona_social_services), eventListFragment);
+                break;
+            case R.id.nav_fac_ogsr:
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.OFFICE_GRADUATE_STUDIES);
+                bundle.putString("wDay",getString(R.string.faculty_office_of_graduate_studies_and_research));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_office_of_graduate_studies_and_research), eventListFragment);
                 break;
             case R.id.nav_seminars:
-                launchFragment(getString(R.string.uwi_research_day), new SeminarFragment());
+                bundle = new Bundle();
+                bundle.putString("filter", Filters.SEMINAR);
+                bundle.putString("wDay",getString(R.string.string_seminars));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.string_seminars), eventListFragment);
                 break;
             case R.id.nav_tours:
+                bundle = new Bundle();
+                bundle.putString("filter", Filters.TOUR);
+                bundle.putString("wDay",getString(R.string.string_tours));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.string_tours), eventListFragment);
                 break;
             case R.id.nav_live:
                 startActivity(new Intent(this, LiveActivity.class));
@@ -279,10 +334,19 @@ public class HomeActivity extends AppCompatActivity
 
     public interface Tags {
         String PARK = "science_experience_park";
-        String HUMANITIES = "humanities";
+        String HUMANITIES = "fhe";
         String LAW = "law";
-        String MEDSCI = "medsci";
-        String SOSCI = "soSci";
-        String SCITECH = "sciTech";
+        String MEDICAL_SCIENCES = "fms";
+        String SOCIAL_SCIENCES = "fss";
+        String SCIENCE_TECHNOLOGY = "fst";
+        String MONA_SOCIAL_SERVICES = "mss";
+        String INSTITUTE_FOR_GENDER_STUDIES = "igds";
+        String OFFICE_GRADUATE_STUDIES = "ogsr";
+    }
+
+    public interface Filters
+    {
+        String SEMINAR = "seminar";
+        String TOUR = "tour";
     }
 }

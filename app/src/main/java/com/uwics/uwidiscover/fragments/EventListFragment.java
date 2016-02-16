@@ -4,23 +4,24 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ParseController;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author Javon Davis
@@ -28,21 +29,39 @@ import java.util.Locale;
  */
 public class EventListFragment extends Fragment {
 
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 17);
-    private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
-    private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
     private String day;
     private LinearLayout dayContainer;
 
     private List<Event> schedule = new ArrayList<>();
-    private boolean fromLocalDatastore;
+    //could just use one filter but lazy and constrained for time
+    //TODO - use one filter instead of a separate one for faculty
+    private boolean hasFilter;
+    private boolean hasFaculty;
     private Drawable image;
+
+    //Keywords belong to each faculty/unit repetitions were handled individually in the db as there were few
+    public ArrayList<String> FHE_Locations = new ArrayList<>(Arrays.asList("the writing centre","animation lab","faculty courtyard","the assembly hall","n4","n1","lt1","the assembly hall"));
+    public ArrayList<String> FMS_Locations = new ArrayList<>(Arrays.asList("fms","uwi mona dental polyclinic"));
+    public ArrayList<String> LAW_Locations = new ArrayList<>(Collections.singletonList("law"));
+    public ArrayList<String> FSS_Locations = new ArrayList<>(Arrays.asList("ctpr office","exhibition village","graduation lawn","spsw booth","the assembly hall","hugh shearer","sr 12","uwi regional headquarters"));
+    public ArrayList<String> FST_Locations = new ArrayList<>(Arrays.asList("spine","biotechnology","geology","earthquake","herbarium","physics","chemistry","science lecture theatre","senate","pesticide","faculty of science and technology"));
+    public ArrayList<String> IGDS_Locations = new ArrayList<>(Collections.singletonList("multi-functional room"));
+    public ArrayList<String> MSS_Locations = new ArrayList<>(Collections.singletonList("mona social services"));
+    public ArrayList<String> OGSR_Locations = new ArrayList<>(Arrays.asList("hr conference room","office of graduate studies and research","pglc"));
+    public ArrayList<String> LIB_Locations = new ArrayList<>(Arrays.asList("uwi mona main library","pglc","uwi mona library","library conference room"));
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        day = getArguments().getString("day");
+        hasFilter = getArguments().containsKey("filter");
+        hasFaculty = getArguments().containsKey("faculty");
+
+        if(getArguments().containsKey("day"))
+            day = getArguments().getString("day");
+
         ((HomeActivity) getActivity()).setActionBarTitle(getArguments().getString("wDay"));
     }
 
@@ -56,46 +75,65 @@ public class EventListFragment extends Fragment {
             image.setAlpha(60);
 
         dayContainer = (LinearLayout) rootView.findViewById(R.id.day_container);
-
-        SimpleDateFormat format = new SimpleDateFormat("EEEE MMMM dd", Locale.US);
-
-        // loadSchedule();
-        getURDSchedule();
+        schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
+        if(hasFilter)
+        {
+            getFilteredSchedule();
+        }
+        else if(hasFaculty)
+        {
+            getFacultySchedule();
+        }
+        else {
+            getDatedSchedule();
+        }
         return rootView;
     }
 
-    private void getURDSchedule() {
-        schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
-        onScheduleLoaded();
+    private void getFacultySchedule() {
+        String faculty = getArguments().getString("faculty");
+        View view;
+        ScheduleItem scheduleItem;
+
+        for(final Event event:schedule)
+        {
+            //couple null checks
+            if (faculty != null && event.getFacultyTag() != null) {
+                if (event.getFacultyTag().toLowerCase().contains(faculty)) {
+                    view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item_full, null);
+                    scheduleItem = new ScheduleItem(view);
+
+                    scheduleItem.startTime.setText(event.getStartTime());
+                    scheduleItem.endTime.setText(event.getEndTime());
+                    scheduleItem.type.setText(event.getType());
+                    scheduleItem.venue.setText(event.getVenue());
+                    scheduleItem.details.setText(event.getDetails());
+
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            EventDialogFragment eventDialogFragment = new EventDialogFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("eventStartTime", event.getStartTime());
+                            bundle.putString("eventEndTime", event.getEndTime());
+                            bundle.putString("eventDate", event.getDate());
+                            bundle.putString("eventDetails", event.getDetails());
+                            bundle.putString("eventVenue", event.getVenue());
+                            bundle.putString("eventType", event.getType());
+
+                            eventDialogFragment.setArguments(bundle);
+                            eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
+                        }
+                    });
+                    LinearLayout layout = (LinearLayout) view.findViewById(R.id.container);
+                    layout.setBackground(image);
+                    dayContainer.addView(view);
+                }
+            }
+        }
     }
 
-//    private void loadSchedule() {
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("schedule");
-//        try {
-//            List<ParseObject> objects = query.find();
-//            ParseObject.pinAllInBackground(objects);
-//            fromLocalDatastore = true;
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-////        if (fromLocalDatastore)
-////            query.fromLocalDatastore();
-//
-//        query.setLimit(200).findInBackground(new FindCallback<ParseObject>() {
-//            @Override
-//            public void done(List<ParseObject> objects, ParseException e) {
-//                if (e == null) {
-//                    for (ParseObject object : objects) {
-//                        schedule.add(new Event(object));
-//                    }
-//                    onScheduleLoaded();
-//                }
-//            }
-//        });
-//    }
-
-    public void onScheduleLoaded() {
+    private void getDatedSchedule() {
         View view;
         ScheduleItem scheduleItem;
 
@@ -131,6 +169,85 @@ public class EventListFragment extends Fragment {
                     layout.setBackground(image);
                     dayContainer.addView(view);
                 }
+            }
+        }
+    }
+
+
+    public void getFilteredSchedule() {
+        String filter = getArguments().getString("filter");
+        View view;
+        ScheduleItem scheduleItem;
+
+        for(final Event event:schedule)
+        {
+            //chose to update here because of convenience
+            /*runUpdate(event, FHE_Locations, "FHE");
+            runUpdate(event, FMS_Locations, "FMS");
+            runUpdate(event, LAW_Locations, "LAW");
+            runUpdate(event, FSS_Locations, "FSS");
+            runUpdate(event, FST_Locations, "FST");
+            runUpdate(event, IGDS_Locations, "IGDS");
+            runUpdate(event, MSS_Locations, "MSS");
+            runUpdate(event, OGSR_Locations, "OGSR");
+            runUpdate(event, LIB_Locations, "LIB");*/
+
+            //couple null checks
+            if (filter != null && event.getDetails() != null && event.getType() != null) {
+                if (event.getDetails().toLowerCase().contains(filter) || event.getType().toLowerCase().contains(filter)) {
+                    view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item_full, null);
+                    scheduleItem = new ScheduleItem(view);
+
+                    scheduleItem.startTime.setText(event.getStartTime());
+                    scheduleItem.endTime.setText(event.getEndTime());
+                    scheduleItem.type.setText(event.getType());
+                    scheduleItem.venue.setText(event.getVenue());
+                    scheduleItem.details.setText(event.getDetails());
+
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            EventDialogFragment eventDialogFragment = new EventDialogFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putString("eventStartTime", event.getStartTime());
+                            bundle.putString("eventEndTime", event.getEndTime());
+                            bundle.putString("eventDate", event.getDate());
+                            bundle.putString("eventDetails", event.getDetails());
+                            bundle.putString("eventVenue", event.getVenue());
+                            bundle.putString("eventType", event.getType());
+
+                            eventDialogFragment.setArguments(bundle);
+                            eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
+                        }
+                    });
+                    LinearLayout layout = (LinearLayout) view.findViewById(R.id.container);
+                    layout.setBackground(image);
+                    dayContainer.addView(view);
+                }
+            }
+        }
+    }
+
+    //Method used to update the faculty columns of the event objects since we weren't
+    // given them inferences had to be made based on reasonable facts
+    private void runUpdate(final Event event, ArrayList<String> locations, String tag) {
+        Log.d("FAC",tag);
+        for(String location:locations)
+        {
+            String venue = event.getVenue();
+            venue = venue.replaceAll("\n", " ");
+            event.setVenue(venue);
+
+            if(venue.toLowerCase().contains(location))
+            {
+                event.setFacultyTag(tag);
+                event.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Log.e("Saved:",event.getType());
+                    }
+                });
+                break;
             }
         }
     }

@@ -10,11 +10,11 @@
             android:icon="@drawable/ic_schedule_black_24dp"
             android:title="@string/string_title_schedule_of_events" />
 
-        <item
+        <!--<item
             android:id="@+id/nav_park"
             android:title="Science Experience Park"
             android:enabled="true"
-            />
+            />-->
     </group>
 
     <item android:title="@string/string_faculties">
@@ -22,29 +22,33 @@
             <group>
                 <item
                     android:id="@+id/nav_fac_humed"
-                    android:enabled="false"
                     android:icon="@mipmap/ic_faculty_humed_img"
                     android:title="@string/faculty_humanities" />
                 <item
                     android:id="@+id/nav_fac_law"
-                    android:enabled="false"
                     android:icon="@mipmap/ic_faculty_law_img"
                     android:title="@string/faculty_law" />
                 <item
                     android:id="@+id/nav_fac_medsci"
-                    android:enabled="false"
                     android:icon="@mipmap/ic_faculty_medsci_img"
                     android:title="@string/faculty_medical_sciences" />
                 <item
                     android:id="@+id/nav_fac_scitech"
-                    android:enabled="false"
                     android:icon="@mipmap/ic_faculty_scitech_img"
                     android:title="@string/faculty_science_technology" />
                 <item
                     android:id="@+id/nav_fac_sosci"
-                    android:enabled="false"
                     android:icon="@mipmap/ic_faculty_sosci_img"
                     android:title="@string/faculty_social_sciences" />
+                <item
+                    android:id="@+id/nav_fac_mss"
+                    android:title="@string/faculty_mona_social_services" />
+                <item
+                    android:id="@+id/nav_fac_igds"
+                    android:title="@string/igds_condensed" />
+                <item
+                    android:id="@+id/nav_fac_ogsr"
+                    android:title="@string/ogsr_condensed" />
             </group>
         </menu>
     </item>
@@ -54,11 +58,9 @@
             <group>
                 <item
                     android:id="@+id/nav_seminars"
-                    android:enabled="false"
                     android:title="@string/string_seminars" />
                 <item
                     android:id="@+id/nav_tours"
-                    android:enabled="false"
                     android:title="@string/string_tours" />
                 <item
                     android:id="@+id/nav_live"

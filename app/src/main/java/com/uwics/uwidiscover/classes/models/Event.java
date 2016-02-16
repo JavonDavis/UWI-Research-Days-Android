@@ -10,15 +10,6 @@ import com.parse.ParseObject;
 @ParseClassName("urdschedule")
 public class Event extends ParseObject {
 
-//    private String startTime;
-//    private String endTime;
-//    private String date;
-//    private String details;
-//    private String venue;
-//    private String type;
-
-//    p
-
     public String getDate() {
         return getString("date");
     }
@@ -30,6 +21,10 @@ public class Event extends ParseObject {
     public String getDetails() {
         return getString("details");
     }
+
+    public String getFacultyTag() { return getString("faculty"); }
+
+    public void setFacultyTag(String tag) { put("faculty", tag); }
 
     public void setDetails(String details) {
         put("details", details);

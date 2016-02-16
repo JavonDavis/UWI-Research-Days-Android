@@ -33,7 +33,7 @@
     <string name="string_title_daily_events">Daily Events for:</string>
     <string name="string_about">About</string>
     <string name="string_search">Search</string>
-    <string name="search_hint">Search Type, Venue, Details …</string>
+    <string name="search_hint">Search keyword or phrase…</string>
     <string name="faculty_humanities"><![CDATA[Humanities & Education]]></string>
     <string name="faculty_law">Law</string>
     <string name="faculty_medical_sciences">Medical Sciences</string>
@@ -51,7 +51,7 @@
     <string name="string_speaker_menu">Speaker\'s Information/Background</string>
     <string name="string_my_schedule_of_events">My Schedule of Events</string>
     <string name="title_activity_live">Live</string>
-    <string name="string_live">Live</string>
+    <string name="string_live">Live stream</string>
     <string name="string_more">More</string>
 
     <string name="string_view_full_list">View Full List</string>
@@ -113,10 +113,13 @@
     <string name="string_d3_s3_c1">http://tv.mona.uwi.edu/research-days-2016-research-days-celebrity-tent-tour</string>
     <string name="string_no_stream_available">No Stream currently available on this channel. Please check another or try again later</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="science_experience_park">Science Experience Park</string>
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
     <string name="friday">Friday</string>
+    <string name="faculty_mona_social_services">Mona Social Services</string>
+    <string name="faculty_institute_for_gender_and_development_studies">Institute for Gender and Development Studies</string>
+    <string name="faculty_office_of_graduate_studies_and_research">Office of Graduate Studies and Research</string>
+    <string name="igds_condensed">Institute for Gender Studies</string>
+    <string name="ogsr_condensed">Office of Graduate Studies</string>
 </resources>

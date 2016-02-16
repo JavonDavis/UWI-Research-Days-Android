@@ -16,9 +16,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Howard on 1/22/2016.
+ * @author Javon Davis
  */
 public class ParseController extends Application {
 
@@ -65,7 +67,7 @@ public class ParseController extends Application {
         }
 
         Collections.sort(eventList, new Comparator<Event>() {
-            DateFormat format = new SimpleDateFormat("h:mm a");
+            DateFormat format = new SimpleDateFormat("h:mm a",Locale.US);
 
             @Override
             public int compare(Event lhs, Event rhs) {

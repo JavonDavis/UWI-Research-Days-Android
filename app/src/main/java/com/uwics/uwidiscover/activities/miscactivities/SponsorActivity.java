@@ -82,7 +82,6 @@ public class SponsorActivity extends AppCompatActivity {
 //                System.out.println("FROMLOCALDATASTOREBOOLFROMSPONSOR: " + sharedPreferences.getBoolean("from_datastore", false));
             }
             query.setLimit(200)
-                    .fromLocalDatastore()
                     .findInBackground(new FindCallback<Event>() {
                         @Override
                         public void done(List<Event> events, ParseException e) {

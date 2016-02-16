@@ -81,7 +81,6 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingStart="10dp"
-                android:text="Venue"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -137,7 +136,6 @@
                     android:id="@+id/event_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Type"
                     android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
@@ -168,7 +166,6 @@
                     android:id="@+id/event_dept"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dept/Office"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -195,7 +192,6 @@
                     android:id="@+id/event_faculty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Faculty"
                     android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
@@ -222,7 +218,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Details"
                 android:textSize="15sp"
                 android:textStyle="italic" />
         </LinearLayout>

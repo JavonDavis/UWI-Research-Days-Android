@@ -85,7 +85,7 @@ public class FilterDialogFragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         mListener.onDialogNegativeClick(FilterDialogFragment.this);
                     }
-                })
+                });
 
         return super.onCreateDialog(savedInstanceState);
     }
