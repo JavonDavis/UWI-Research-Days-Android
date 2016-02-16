@@ -42,6 +42,7 @@ public class LiveActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Spinner streamChannelSpinner;
     private TextView noStreamTextView;
+    private TextView channelLiveStreamTitleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class LiveActivity extends AppCompatActivity {
         mWebView = (WebView) findViewById(R.id.webview);
         streamChannelSpinner = (Spinner) findViewById(R.id.channel_selector_spinner);
         noStreamTextView = (TextView) findViewById(R.id.text_no_stream_available);
+        channelLiveStreamTitleTextView = (TextView) findViewById(R.id.channel_live_stream_title);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setMax(100);
 
@@ -64,7 +66,7 @@ public class LiveActivity extends AppCompatActivity {
     }
 
     private void setUpChannelSpinner() {
-        ArrayAdapter<String> streamChannelOptionsAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> streamChannelOptionsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.array_stream_channels));
@@ -73,8 +75,8 @@ public class LiveActivity extends AppCompatActivity {
         streamChannelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mWebView.loadUrl("about:blank");
                 int channelIndex = parent.getSelectedItemPosition();
-                // TODO: Put delay to show that stream has changed
                 showStream(channelIndex);
             }
 
@@ -85,11 +87,9 @@ public class LiveActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     private void showStream(int channelIndex) {
         // TODO: Gonna probably run this through an Async after testing
         // TODO: Do some check to show unavailable stream if user is on screen and the stream ends
-//        int i = currResearchDay();
         int i = researchDayIndex();
         if (i != 0) {
             String streamUrl = validLinkToStreamForTime(i, channelIndex);
@@ -107,19 +107,6 @@ public class LiveActivity extends AppCompatActivity {
         }
     }
 
-    private int currResearchDay() {
-//        if (isResearchDay(DAY_ONE)) {
-//            return 1;
-//        } else if (isResearchDay(DAY_TWO)) {
-//            return 2;
-//        } else if (isResearchDay(DAY_THREE)) {
-//            return 3;
-//        } else {
-//            return 0;
-//        }
-        return researchDayIndex();
-    }
-
     private int researchDayIndex() {
         if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_ONE_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_ONE_DAY_OF_YEAR)) {
             return 1;
@@ -128,12 +115,6 @@ public class LiveActivity extends AppCompatActivity {
         } else if ((CURRENT_DAY.get(Calendar.YEAR) == DAY_THREE_YEAR) && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == DAY_THREE_DAY_OF_YEAR)) {
             return 3;
         } else return 0;
-    }
-
-    private boolean isResearchDay(Calendar rDay) {
-        // TODO: DAY_OF_YEAR being incremented/decremented by 1 when it gets here after initial run. Figure out why
-        return (CURRENT_DAY.get(Calendar.YEAR) == rDay.get(Calendar.YEAR))
-                && (CURRENT_DAY.get(Calendar.DAY_OF_YEAR) == rDay.get(Calendar.DAY_OF_YEAR));
     }
 
     /* D1
@@ -161,45 +142,58 @@ public class LiveActivity extends AppCompatActivity {
         if (rDayIndex == 1) {
             if (cStream == 0) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 9, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d1_s1));
                     return getString(R.string.string_d1_s1_c1);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 13, 0))) {
                     // TODO: Verify this time
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d1_s3));
                     return getString(R.string.string_d1_s3_c1);
                 }
             } else if (cStream == 1) {
-                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
+                if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 15, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d1_s2));
                     return getString(R.string.string_d1_s2_c2);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 17, 16)) && CURRENT_DAY.before(tempDay(rDayIndex, 9, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d1_s5));
                     return getString(R.string.string_d1_s5_c2);
                 }
             } else if (cStream == 2) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 14, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 19, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d1_s4));
                     return getString(R.string.string_d1_s4_c3);
                 }
             } else if (cStream == 3) {
+                channelLiveStreamTitleTextView.setText("");
                 return null;
             }
         } else if (rDayIndex == 2) {
             if (cStream == 0) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 11, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 13, 30))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s1));
                     return getString(R.string.string_d2_s1_c1);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 13, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 16, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s3));
                     return getString(R.string.string_d2_s3_c1);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 16, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s6));
                     return getString(R.string.string_d2_s6_c1);
                 }
             } else if (cStream == 1) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 21, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s2));
                     return getString(R.string.string_d2_s2_c2);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 16, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 21, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s7));
                     return getString(R.string.string_d2_s7_c2);
                 }
             } else if (cStream == 2) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 13, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 0))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s4));
                     return getString(R.string.string_d2_s4_c3);
                 }
             } else if (cStream == 3) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 14, 30)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 30))) {
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d2_s5));
                     return getString(R.string.string_d2_s5_c4);
                 }
             }
@@ -207,22 +201,28 @@ public class LiveActivity extends AppCompatActivity {
             if (cStream == 0) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 10, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 0))) {
                     // TODO: Verify this time
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d3_s1));
                     return getString(R.string.string_d3_s1_c1);
                 } else if (CURRENT_DAY.after(tempDay(rDayIndex, 15, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 17, 0))) {
                     // TODO: Verify this time
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d3_s3));
                     return getString(R.string.string_d3_s3_c1);
                 }
             } else if (cStream == 1) {
                 if (CURRENT_DAY.after(tempDay(rDayIndex, 12, 0)) && CURRENT_DAY.before(tempDay(rDayIndex, 12, 45))) {
                     // TODO: Verify this time
+                    channelLiveStreamTitleTextView.setText(getString(R.string.d3_s2));
                     return getString(R.string.string_d3_s2_c2);
                 }
             } else if (cStream == 2) {
+                channelLiveStreamTitleTextView.setText("");
                 return null;
             } else if (cStream == 3) {
+                channelLiveStreamTitleTextView.setText("");
                 return null;
             }
         }
+        channelLiveStreamTitleTextView.setText("");
         return null;
     }
 
@@ -255,11 +255,6 @@ public class LiveActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new WebClient());
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-//        mWebView.loadUrl("http://tv.mona.uwi.edu/");
-//        mWebView.loadUrl("http://player.twitch.tv/?volume=0.5&channel=esl_sc2&time=14");
-//        mWebView.loadUrl("http://www.uwicfptv.com/livestream");
-//        mWebView.loadUrl("http://tv.mona.uwi.edu/research-days-2016-fhe-lunch-hour-concert");
     }
 
     @Override

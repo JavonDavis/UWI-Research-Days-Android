@@ -76,6 +76,24 @@
     <string name="string_exit">Exit</string>
     <string name="string_select_sponsor_banner">Select a banner to visit the page of the Organization/Company/Group</string>
 
+    <string name="d1_s1">"Research Days 2016 - Official Opening Ceremony"</string>
+    <string name="d1_s2">"Principal's Tour - The Main Exhibition</string>
+    <string name="d1_s3">FHE Lunch Hour Concert</string>
+    <string name="d1_s4">"Intercampus Postgraduate - Debate Finals</string>
+    <string name="d1_s5">"URD 2016 SIGNATURE EVENT - Lecture Presentation: Medical Marijuana</string>
+
+    <string name="d2_s1">Lunch Hour Concert</string>
+    <string name="d2_s2">Department of Government - Department Book Launch"</string>
+    <string name="d2_s3">FST URD LECTURE SERIES - Title: The Business of Personal Care Products</string>
+    <string name="d2_s4">Poetry Clash 2016</string>
+    <string name="d2_s5">dBURNZ Research Days - Celebrity Tent Tour!</string>
+    <string name="d2_s6">Sue Cobb Lecture</string>
+    <string name="d2_s7">Misconduct in Public Office</string>
+
+    <string name="d3_s1">Launch of the "Braadkyaas Jamiekan" App</string>
+    <string name="d3_s2">Lunch Hour Concert</string>
+    <string name="d3_s3">Research Days - Celebrity Tent Tour!</string>
+
     <string name="string_d1_s1_c1">http://tv.mona.uwi.edu/research-days-2016-official-opening-ceremony</string>
     <string name="string_d1_s2_c2">http://tv.mona.uwi.edu/research-days-2016-principal039s-tourthe-main-exhibition</string>
     <string name="string_d1_s3_c1">http://tv.mona.uwi.edu/research-days-2016-fhe-lunch-hour-concert</string>

@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
 
         <View
             android:id="@+id/separator"
@@ -16,11 +16,23 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/faded_line_separator" />
 
+        <TextView
+            android:id="@+id/channel_live_stream_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/separator"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
         <Spinner
             android:id="@+id/channel_selector_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/separator" />
+            android:layout_above="@id/channel_live_stream_title" />
     </RelativeLayout>
 
     <FrameLayout
