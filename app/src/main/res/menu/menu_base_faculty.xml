@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_show_map"
+        android:icon="@drawable/ic_map_white_24dp"
+        android:title="@string/string_show_location"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_info_outline_white_24dp"
+        android:title="@string/string_about"
+        app:showAsAction="ifRoom" />
+
+</menu>

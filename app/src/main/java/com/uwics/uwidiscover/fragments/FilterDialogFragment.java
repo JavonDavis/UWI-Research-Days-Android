@@ -28,6 +28,8 @@ public class FilterDialogFragment extends DialogFragment {
         void onDialogNegativeClick(DialogFragment dialog);
     }
 
+
+
     private FilterDialogListener mListener;
 
     public static FilterDialogFragment newInstance() {

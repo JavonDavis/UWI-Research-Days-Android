@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,8 +26,12 @@ import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.FilterDialogFragment;
 import com.uwics.uwidiscover.utils.ParseController;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -33,6 +39,8 @@ import butterknife.ButterKnife;
 
 public class SearchableActivity extends AppCompatActivity
         implements FilterDialogFragment.FilterDialogListener {
+
+    public static final String TAG = "SearchableActivity";
 
     @Bind(R.id.container) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.search_results) RecyclerView mRecyclerView;
@@ -152,16 +160,57 @@ public class SearchableActivity extends AppCompatActivity
             else if (!filterValues.containsKey("friday") && event.getDate().equals("20/2/2016")) filteredEvents.add(event);
         }
 
-        if (filterValues.containsKey("start_time")) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm", Locale.US);
 
+        if (filterValues.containsKey("start_time")) {
+            try {
+                Date filterStartTime = format.parse(filterValues.get("start_time"));
+                Date eventStartTime;
+
+                for (Event event: filteredEvents) {
+                    eventStartTime = format.parse(event.getStartTime());
+
+                    if (null == eventStartTime)
+                        continue;
+
+                    if (eventStartTime.before(filterStartTime))
+                        filteredEvents.remove(event);
+                }
+
+            } catch (ParseException e) {
+                Log.d(TAG, e.getMessage());
+                Snackbar.make(mCoordinatorLayout, "Start or end time invalid", Snackbar.LENGTH_LONG)
+                        .show();
+            }
         }
 
         if (filterValues.containsKey("end_time")) {
+            try {
+                Date filterEndTime = format.parse(filterValues.get("end_time"));
+                Date eventEndTime;
 
+                for (Event event: filteredEvents) {
+                    eventEndTime = format.parse(event.getEndTime());
+
+                    if (null == eventEndTime)
+                        continue;
+
+                    if (eventEndTime.before(filterEndTime))
+                        filteredEvents.remove(event);
+                }
+
+            } catch (ParseException e) {
+                Log.d(TAG, e.getMessage());
+                Snackbar.make(mCoordinatorLayout, "Start or end time invalid", Snackbar.LENGTH_LONG)
+                        .show();
+            }
         }
 
         mEventAdapter.setEvents(filteredEvents);
 
+        if (filteredEvents.size() <= 0) {
+            mErrorView.setText(R.string.no_results_found);
+        }
     }
 
     @Override
