@@ -54,6 +54,18 @@ public class SponsorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sponsor_activity);
 
+        if (getIntent().getBooleanExtra("temp", false)) {
+
+            int secondsDelayed = 1;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            }, secondsDelayed * 1000);
+            return;
+        }
+
 //        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 //        RecyclerViewDisabler mRecyclerDisabler = new RecyclerViewDisabler();
 //        mRecyclerView.addOnItemTouchListener(mRecyclerDisabler);

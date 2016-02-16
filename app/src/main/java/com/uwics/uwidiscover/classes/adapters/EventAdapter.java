@@ -75,6 +75,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
         notifyDataSetChanged();
     }
 
+    public void setEvents(List<Event> events) {
+        eventList = events;
+        notifyDataSetChanged();
+    }
+
 //    public Event removeItem(int position) {
 //        final Event model = eventList.remove(position);
 //        notifyItemRemoved(position);

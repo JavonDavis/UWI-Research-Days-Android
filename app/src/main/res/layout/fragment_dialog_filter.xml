@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="150dp"
     android:layout_height="match_parent">
 
     <android.support.design.widget.TextInputLayout
@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:text="@string/wednesday"
         android:id="@+id/wednesday"
-        android:layout_gravity="center_horizontal"
         android:checked="true"
         />
 
@@ -43,7 +42,6 @@
         android:layout_height="wrap_content"
         android:text="@string/thursday"
         android:id="@+id/thursday"
-        android:layout_gravity="center_horizontal"
         android:checked="true"
         />
 
@@ -52,8 +50,29 @@
         android:layout_height="wrap_content"
         android:text="@string/friday"
         android:id="@+id/friday"
-        android:layout_gravity="center_horizontal"
         android:checked="true"
         />
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            style="?attr/buttonBarButtonStyle"
+            />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/buttonBarButtonStyle"
+            android:text="Cancel"
+            />
+    </LinearLayout>
 
 </LinearLayout>

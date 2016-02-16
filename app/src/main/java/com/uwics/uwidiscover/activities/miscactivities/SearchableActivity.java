@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -84,7 +83,6 @@ public class SearchableActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_filter:
-                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
                 showFilterDialog();
                 return true;
             case R.id.action_search:
@@ -146,7 +144,29 @@ public class SearchableActivity extends AppCompatActivity
     public void onDialogPositiveClick(DialogFragment dialog, Map<String, String> filterValues) {
         dialog.dismiss();
 
+        List<Event> filteredEvents = eventList;
 
+        for (Event event: filteredEvents) {
+            if (!filterValues.containsKey("wednesday") && event.getDate().equals("18/2/2016")) filteredEvents.remove(event);
+            if (!filterValues.containsKey("thursday") && event.getDate().equals("19/2/2016")) filteredEvents.remove(event);
+            if (!filterValues.containsKey("friday") && event.getDate().equals("20/2/2016")) filteredEvents.remove(event);
+
+        }
+
+        /*
+            Spaghetti code
+         */
+//        for (Event event: eventList) {
+//            if (filterValues.containsKey("wednesday") && event.getDate().equals("18/2/2016")) {
+//                filteredEvents.add(event);
+//            } else if (filterValues.containsKey("thursday")  && event.getDate().equals("19/2/2016")) {
+//                filteredEvents.add(event);
+//            } else if (filterValues.containsKey("friday")  && event.getDate().equals("20/2/2016")) {
+//                filteredEvents.add(event);
+//            }
+
+
+        }
     }
 
     @Override

@@ -1,15 +1,14 @@
 package com.uwics.uwidiscover.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -35,12 +34,9 @@ public class FilterDialogFragment extends DialogFragment {
         return new FilterDialogFragment();
     }
 
-    @NonNull
+    @Nullable
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_dialog_filter, null);
 
         final EditText editTextStartTime = (EditText) rootView.findViewById(R.id.start_time);
@@ -50,42 +46,35 @@ public class FilterDialogFragment extends DialogFragment {
         final CheckBox checkBoxThursday = (CheckBox) rootView.findViewById(R.id.thursday);
         final CheckBox checkBoxFriday = (CheckBox) rootView.findViewById(R.id.friday);
 
+        final Button btnConfirm = (Button) rootView.findViewById(R.id.btn_confirm);
+        final Button btnCancel = (Button) rootView.findViewById(R.id.btn_cancel);
+
         final Map<String, String> filterValues = new ArrayMap<>();
 
-        builder.setView(rootView)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        btnCancel.setOnClickListener(v -> mListener.onDialogNegativeClick(this));
+        btnConfirm.setOnClickListener(v -> {
+            String startTime = editTextStartTime.getText().toString();
+            String endTime = editTextEndTime.getText().toString();
 
-                        String startTime = editTextStartTime.getText().toString();
-                        String endTime = editTextEndTime.getText().toString();
+            if (!startTime.equals(""))
+                filterValues.put("start_time", startTime);
 
-                        if (!startTime.equals(""))
-                            filterValues.put("start_time", startTime);
+            if (!endTime.equals(""))
+                filterValues.put("end_time", endTime);
 
-                        if (!endTime.equals(""))
-                            filterValues.put("end_time", endTime);
+            if (checkBoxWednesday.isChecked())
+                filterValues.put("wednesday", "18/2/2016");
 
-                        if (checkBoxWednesday.isChecked())
-                            filterValues.put("wednesday", "18/2/2016");
+            if (checkBoxThursday.isChecked())
+                filterValues.put("thursday", "19/2/2016");
 
-                        if (checkBoxThursday.isChecked())
-                            filterValues.put("thursday", "19/2/2016");
+            if (checkBoxFriday.isChecked())
+                filterValues.put("friday", "20/2/2016");
 
-                        if (checkBoxFriday.isChecked())
-                            filterValues.put("friday", "20/2/2016");
+            mListener.onDialogPositiveClick(FilterDialogFragment.this, filterValues);
+        });
 
-                        mListener.onDialogPositiveClick(FilterDialogFragment.this, filterValues);
-                    }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mListener.onDialogNegativeClick(FilterDialogFragment.this);
-                    }
-                });
-
-        return super.onCreateDialog(savedInstanceState);
+        return rootView;
     }
 
     @Override
@@ -98,5 +87,11 @@ public class FilterDialogFragment extends DialogFragment {
             throw new ClassCastException(activity.toString()
                     + " must implement FilterDialogListener");
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        mListener = null; // release reference to listener
+        super.onDestroyView();
     }
 }

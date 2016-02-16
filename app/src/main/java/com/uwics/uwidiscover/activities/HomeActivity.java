@@ -24,12 +24,12 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SearchableActivity;
+import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
 import com.uwics.uwidiscover.classes.models.Faculty;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.HumEdFacultyFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.LawFacultyFragment;
@@ -68,10 +68,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             setTitle(savedInstanceState.getCharSequence("title"));
         }
-
-        String deviceId = (String) ParseInstallation.getCurrentInstallation().get("unique_id");
-        Toast.makeText(this, "token: " + deviceId, Toast.LENGTH_LONG).show();
-
 //        initialParseRequests();
     }
 
@@ -196,6 +192,9 @@ public class HomeActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_park:
+                Intent intent = new Intent(this, SponsorActivity.class)
+                        .putExtra("temp", true);
+                startActivity(intent);
                 launchFragment(getString(R.string.science_experience_park), ScienceParkFragment.newInstance(), Tags.PARK);
                 break;
             case R.id.nav_schedule:
