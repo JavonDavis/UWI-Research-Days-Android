@@ -9,6 +9,12 @@
             android:enabled="true"
             android:icon="@drawable/ic_schedule_black_24dp"
             android:title="@string/string_title_schedule_of_events" />
+
+        <item
+            android:id="@+id/nav_park"
+            android:title="Science Experience Park"
+            android:enabled="true"
+            />
     </group>
 
     <item android:title="@string/string_faculties">
