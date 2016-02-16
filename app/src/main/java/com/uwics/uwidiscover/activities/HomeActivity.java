@@ -68,10 +68,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             setTitle(savedInstanceState.getCharSequence("title"));
         }
-
-        String deviceId = (String) ParseInstallation.getCurrentInstallation().get("unique_id");
-        Toast.makeText(this, "token: " + deviceId, Toast.LENGTH_LONG).show();
-
 //        initialParseRequests();
     }
 
