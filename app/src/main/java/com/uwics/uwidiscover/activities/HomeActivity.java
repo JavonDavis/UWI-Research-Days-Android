@@ -15,22 +15,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SearchableActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
-import com.uwics.uwidiscover.classes.models.Faculty;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.HumEdFacultyFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.LawFacultyFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.MedSciFacultyFragment;
@@ -39,8 +31,6 @@ import com.uwics.uwidiscover.fragments.navdrawerfragments.SciTechFacultyFragment
 import com.uwics.uwidiscover.fragments.navdrawerfragments.ScienceParkFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.SeminarFragment;
 import com.uwics.uwidiscover.fragments.navdrawerfragments.SoSciFacultyFragment;
-
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,38 +58,6 @@ public class HomeActivity extends AppCompatActivity
         } else {
             setTitle(savedInstanceState.getCharSequence("title"));
         }
-//        initialParseRequests();
-    }
-
-    private void initialParseRequests() {
-        ParseQuery<Faculty> localQuery = ParseQuery.getQuery(Faculty.class);
-
-        localQuery.fromLocalDatastore();
-        localQuery.getFirstInBackground(new GetCallback<Faculty>() {
-            @Override
-            public void done(Faculty faculty, ParseException e) {
-                if (e == null) {
-                    // no error
-                    if (faculty == null) {
-                        ParseQuery<Faculty> query = ParseQuery.getQuery(Faculty.class);
-
-                        query.findInBackground(new FindCallback<Faculty>() {
-                            @Override
-                            public void done(List<Faculty> faculties, ParseException e) {
-                                if (e == null) {
-                                    Toast.makeText(HomeActivity.this, faculties.get(0).getName(), Toast.LENGTH_SHORT).show();
-                                    ParseObject.pinAllInBackground(faculties);
-                                }
-                            }
-                        });
-                    }
-                } else {
-                    Log.wtf(HomeActivity.class.getName(), "Error: " + e.getMessage());
-                }
-            }
-        });
-        // pin all the faculties in the background for the initial loading of the app
-        // so we have a reference to them
     }
 
     private void setupNavDrawer() {
@@ -156,7 +114,6 @@ public class HomeActivity extends AppCompatActivity
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-//        searchView.setOnQueryTextListener(new SearchQueryListener());
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         ComponentName componentName = new ComponentName(this, SearchableActivity.class);
@@ -164,19 +121,6 @@ public class HomeActivity extends AppCompatActivity
 
         return super.onCreateOptionsMenu(menu);
     }
-
-//    private class SearchQueryListener implements SearchView.OnQueryTextListener {
-//
-//        @Override
-//        public boolean onQueryTextSubmit(String query) {
-//            return false;
-//        }
-//
-//        @Override
-//        public boolean onQueryTextChange(String newText) {
-//            return true;
-//        }
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
