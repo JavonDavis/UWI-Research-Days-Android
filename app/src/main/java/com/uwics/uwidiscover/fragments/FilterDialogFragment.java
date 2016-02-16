@@ -15,8 +15,6 @@ import android.widget.EditText;
 
 import com.uwics.uwidiscover.R;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -86,6 +84,7 @@ public class FilterDialogFragment extends DialogFragment {
                         mListener.onDialogNegativeClick(FilterDialogFragment.this);
                     }
                 });
+        // Forgetting ".show();" and another dialog pops up right before it
 
         return super.onCreateDialog(savedInstanceState);
     }

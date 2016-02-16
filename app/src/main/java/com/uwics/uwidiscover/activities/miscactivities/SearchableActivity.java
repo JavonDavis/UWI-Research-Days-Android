@@ -64,11 +64,11 @@ public class SearchableActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-        setupSearView(menu);
+        setupSearchView(menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void setupSearView(Menu menu) {
+    public void setupSearchView(Menu menu) {
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
