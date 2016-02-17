@@ -74,6 +74,7 @@
     <group android:id="@+id/app_misc_stuff_group">
         <item
             android:id="@+id/nav_sponsors"
+            android:visible="false"
             android:enabled="true"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="@string/string_meet_our_sponsors" />

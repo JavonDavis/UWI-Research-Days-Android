@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
+import com.uwics.uwidiscover.activities.miscactivities.FSTSponsorFragment;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SearchableActivity;
 import com.uwics.uwidiscover.classes.models.Faculty;
@@ -217,12 +219,10 @@ public class HomeActivity extends AppCompatActivity
                 launchFragment(getString(R.string.faculty_medical_sciences), eventListFragment);
                 break;
             case R.id.nav_fac_scitech:
-                bundle = new Bundle();
-                bundle.putString("faculty", Tags.SCIENCE_TECHNOLOGY);
-                bundle.putString("wDay",getString(R.string.faculty_science_technology));
+                FSTSponsorFragment fstSponsorFragment = new FSTSponsorFragment();
+                launchFragment(getString(R.string.faculty_science_technology), fstSponsorFragment);
                 eventListFragment = new EventListFragment();
-                eventListFragment.setArguments(bundle);
-                launchFragment(getString(R.string.faculty_science_technology), eventListFragment);
+                delay(eventListFragment);
                 break;
             case R.id.nav_fac_sosci:
                 bundle = new Bundle();
@@ -348,5 +348,20 @@ public class HomeActivity extends AppCompatActivity
     {
         String SEMINAR = "seminar";
         String TOUR = "tour";
+    }
+
+    private void delay(final EventListFragment eventListFragment) {
+        int secondsDelayed = 2;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Bundle bundle = new Bundle();
+                bundle.putString("faculty", Tags.SCIENCE_TECHNOLOGY);
+                bundle.putString("wDay",getString(R.string.faculty_science_technology));
+                eventListFragment.setArguments(bundle);
+
+                launchFragment(getString(R.string.faculty_science_technology), eventListFragment);
+            }
+        }, secondsDelayed * 1000);
     }
 }
