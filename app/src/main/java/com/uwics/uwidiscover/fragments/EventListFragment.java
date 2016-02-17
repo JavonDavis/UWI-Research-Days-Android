@@ -40,16 +40,15 @@ public class EventListFragment extends Fragment {
     private Drawable image;
 
     //Keywords belong to each faculty/unit repetitions were handled individually in the db as there were few
-    public ArrayList<String> FHE_Locations = new ArrayList<>(Arrays.asList("the writing centre","animation lab","faculty courtyard","the assembly hall","n4","n1","lt1","the assembly hall"));
-    public ArrayList<String> FMS_Locations = new ArrayList<>(Arrays.asList("fms","uwi mona dental polyclinic"));
+    public ArrayList<String> FHE_Locations = new ArrayList<>(Arrays.asList("the writing centre", "animation lab", "faculty courtyard", "the assembly hall", "n4", "n1", "lt1", "the assembly hall"));
+    public ArrayList<String> FMS_Locations = new ArrayList<>(Arrays.asList("fms", "uwi mona dental polyclinic"));
     public ArrayList<String> LAW_Locations = new ArrayList<>(Collections.singletonList("law"));
-    public ArrayList<String> FSS_Locations = new ArrayList<>(Arrays.asList("ctpr office","exhibition village","graduation lawn","spsw booth","the assembly hall","hugh shearer","sr 12","uwi regional headquarters"));
-    public ArrayList<String> FST_Locations = new ArrayList<>(Arrays.asList("spine","biotechnology","geology","earthquake","herbarium","physics","chemistry","science lecture theatre","senate","pesticide","faculty of science and technology"));
+    public ArrayList<String> FSS_Locations = new ArrayList<>(Arrays.asList("ctpr office", "exhibition village", "graduation lawn", "spsw booth", "the assembly hall", "hugh shearer", "sr 12", "uwi regional headquarters"));
+    public ArrayList<String> FST_Locations = new ArrayList<>(Arrays.asList("spine", "biotechnology", "geology", "earthquake", "herbarium", "physics", "chemistry", "science lecture theatre", "senate", "pesticide", "faculty of science and technology"));
     public ArrayList<String> IGDS_Locations = new ArrayList<>(Collections.singletonList("multi-functional room"));
     public ArrayList<String> MSS_Locations = new ArrayList<>(Collections.singletonList("mona social services"));
-    public ArrayList<String> OGSR_Locations = new ArrayList<>(Arrays.asList("hr conference room","office of graduate studies and research","pglc"));
-    public ArrayList<String> LIB_Locations = new ArrayList<>(Arrays.asList("uwi mona main library","pglc","uwi mona library","library conference room"));
-
+    public ArrayList<String> OGSR_Locations = new ArrayList<>(Arrays.asList("hr conference room", "office of graduate studies and research", "pglc"));
+    public ArrayList<String> LIB_Locations = new ArrayList<>(Arrays.asList("uwi mona main library", "pglc", "uwi mona library", "library conference room"));
 
 
     @Override
@@ -59,7 +58,7 @@ public class EventListFragment extends Fragment {
         hasFilter = getArguments().containsKey("filter");
         hasFaculty = getArguments().containsKey("faculty");
 
-        if(getArguments().containsKey("day"))
+        if (getArguments().containsKey("day"))
             day = getArguments().getString("day");
 
         ((HomeActivity) getActivity()).setActionBarTitle(getArguments().getString("wDay"));
@@ -76,15 +75,11 @@ public class EventListFragment extends Fragment {
 
         dayContainer = (LinearLayout) rootView.findViewById(R.id.day_container);
         schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
-        if(hasFilter)
-        {
+        if (hasFilter) {
             getFilteredSchedule();
-        }
-        else if(hasFaculty)
-        {
+        } else if (hasFaculty) {
             getFacultySchedule();
-        }
-        else {
+        } else {
             getDatedSchedule();
         }
         return rootView;
@@ -95,8 +90,7 @@ public class EventListFragment extends Fragment {
         View view;
         ScheduleItem scheduleItem;
 
-        for(final Event event:schedule)
-        {
+        for (final Event event : schedule) {
             //couple null checks
             if (faculty != null && event.getFacultyTag() != null) {
                 if (event.getFacultyTag().toLowerCase().contains(faculty)) {
@@ -179,8 +173,7 @@ public class EventListFragment extends Fragment {
         View view;
         ScheduleItem scheduleItem;
 
-        for(final Event event:schedule)
-        {
+        for (final Event event : schedule) {
             //chose to update here because of convenience
             /*runUpdate(event, FHE_Locations, "FHE");
             runUpdate(event, FMS_Locations, "FMS");
@@ -231,20 +224,18 @@ public class EventListFragment extends Fragment {
     //Method used to update the faculty columns of the event objects since we weren't
     // given them inferences had to be made based on reasonable facts
     private void runUpdate(final Event event, ArrayList<String> locations, String tag) {
-        Log.d("FAC",tag);
-        for(String location:locations)
-        {
+        Log.d("FAC", tag);
+        for (String location : locations) {
             String venue = event.getVenue();
             venue = venue.replaceAll("\n", " ");
             event.setVenue(venue);
 
-            if(venue.toLowerCase().contains(location))
-            {
+            if (venue.toLowerCase().contains(location)) {
                 event.setFacultyTag(tag);
                 event.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        Log.e("Saved:",event.getType());
+                        Log.e("Saved:", event.getType());
                     }
                 });
                 break;

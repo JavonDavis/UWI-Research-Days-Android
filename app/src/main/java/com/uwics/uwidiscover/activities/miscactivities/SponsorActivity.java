@@ -76,12 +76,12 @@ public class SponsorActivity extends AppCompatActivity {
         ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
         try {
             if (!sharedPreferences.getBoolean("from_datastore", false)) {
-                List<Event> objects = query.find();
+                List<Event> objects = query.setLimit(200).find();
                 Event.pinAllInBackground(objects);
                 sharedPreferences.edit().putBoolean("from_datastore", true).apply();
-//                System.out.println("FROMLOCALDATASTOREBOOLFROMSPONSOR: " + sharedPreferences.getBoolean("from_datastore", false));
             }
             query.setLimit(200)
+                    .fromLocalDatastore()
                     .findInBackground(new FindCallback<Event>() {
                         @Override
                         public void done(List<Event> events, ParseException e) {
