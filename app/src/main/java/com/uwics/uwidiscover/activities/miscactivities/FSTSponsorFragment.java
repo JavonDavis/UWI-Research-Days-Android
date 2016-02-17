@@ -27,8 +27,8 @@ public class FSTSponsorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sponsor_activity, container, false);
-        DilatingDotsProgressBar mProgressBar = (DilatingDotsProgressBar) rootView.findViewById(R.id.progress_bar);
-        mProgressBar.showNow();
+//        DilatingDotsProgressBar mProgressBar = (DilatingDotsProgressBar) rootView.findViewById(R.id.progress_bar);
+//        mProgressBar.showNow();
         return rootView;
     }
 }
