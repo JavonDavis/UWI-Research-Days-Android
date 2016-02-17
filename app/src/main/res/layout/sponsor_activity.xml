@@ -10,22 +10,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:color="@color/colorPrimary"
-        android:radius="5dp"
-        app:dd_horizontalSpacing="4dp"
-        app:dd_numDots="5"
-        app:dd_scaleMultiplier="1.5" />
+    <!--<com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar-->
+        <!--android:id="@+id/progress_bar"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:color="@color/colorPrimary"-->
+        <!--android:radius="5dp"-->
+        <!--app:dd_horizontalSpacing="4dp"-->
+        <!--app:dd_numDots="5"-->
+        <!--app:dd_scaleMultiplier="1.5" />-->
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/progress_bar">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/vision"
