@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.adapters.EventAdapter;
@@ -62,8 +63,8 @@ public class SearchableActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_search, menu);
-//        setUpSearchView(menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        setUpSearchView(menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -71,11 +72,24 @@ public class SearchableActivity extends AppCompatActivity
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenuItem);
-//        searchView.setOnQueryTextListener(new SearchQueryListener());
 
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                createQueryRequest(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                createQueryRequest(newText);
+                return true;
+            }
+        });
+
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
 
     }
 
@@ -86,8 +100,8 @@ public class SearchableActivity extends AppCompatActivity
 //                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
 //                showFilterDialog();
 //                return true;
-//            case R.id.action_search:
-//                return true;
+            case R.id.action_search:
+                return true;
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -128,11 +142,18 @@ public class SearchableActivity extends AppCompatActivity
                     || e.getVenue().toLowerCase().contains(searchString)
                     || e.getType().toLowerCase().contains(searchString)) {
                 resultEventList.add(e);
-                mEventAdapter.addEvent(e);
+                // mEventAdapter.addEvent(e);
             }
         }
-        if (resultEventList.size() == 0)
+        if (resultEventList.size() == 0) {
             mErrorView.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
+        } else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            mErrorView.setVisibility(View.GONE);
+        }
+
+        mEventAdapter.setEvents(resultEventList);
         queryComplete = true;
     }
 

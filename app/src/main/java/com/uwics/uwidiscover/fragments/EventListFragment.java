@@ -1,5 +1,6 @@
 package com.uwics.uwidiscover.fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.parse.ParseException;
 import com.parse.SaveCallback;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
+import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ParseController;
 
@@ -93,6 +95,9 @@ public class EventListFragment extends Fragment {
         for (final Event event : schedule) {
             //couple null checks
             if (faculty != null && event.getFacultyTag() != null) {
+                if (faculty.equals("fst")) {
+                    ((HomeActivity) getActivity()).setTitle(getString(R.string.faculty_science_technology));
+                }
                 if (event.getFacultyTag().toLowerCase().contains(faculty)) {
                     view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item_full, null);
                     scheduleItem = new ScheduleItem(view);
