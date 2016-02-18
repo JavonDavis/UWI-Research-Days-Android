@@ -79,7 +79,6 @@ public class SplashActivity extends AppCompatActivity {
                 sharedPreferences.edit().putBoolean("from_datastore", true).apply();
             }
             query.setLimit(200)
-                    .fromLocalDatastore()
                     .findInBackground(new FindCallback<Event>() {
                         @Override
                         public void done(List<Event> events, ParseException e) {
