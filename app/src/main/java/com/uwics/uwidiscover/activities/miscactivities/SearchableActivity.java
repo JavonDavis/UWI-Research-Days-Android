@@ -1,11 +1,8 @@
 package com.uwics.uwidiscover.activities.miscactivities;
 
 import android.app.SearchManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
@@ -17,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.adapters.EventAdapter;
@@ -35,7 +31,6 @@ import butterknife.ButterKnife;
 public class SearchableActivity extends AppCompatActivity
         implements FilterDialogFragment.FilterDialogListener {
 
-    @Bind(R.id.container) CoordinatorLayout mCoordinatorLayout;
     @Bind(R.id.search_results) RecyclerView mRecyclerView;
     @Bind(R.id.tv_error) TextView mErrorView;
 
@@ -86,20 +81,11 @@ public class SearchableActivity extends AppCompatActivity
                 return true;
             }
         });
-
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        ComponentName componentName = new ComponentName(this, SearchableActivity.class);
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName));
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_filter:
-//                Snackbar.make(mCoordinatorLayout, "Filter", Snackbar.LENGTH_SHORT).show();
-//                showFilterDialog();
-//                return true;
             case R.id.action_search:
                 return true;
             case android.R.id.home:
@@ -142,7 +128,6 @@ public class SearchableActivity extends AppCompatActivity
                     || e.getVenue().toLowerCase().contains(searchString)
                     || e.getType().toLowerCase().contains(searchString)) {
                 resultEventList.add(e);
-                // mEventAdapter.addEvent(e);
             }
         }
         if (resultEventList.size() == 0) {
@@ -155,11 +140,6 @@ public class SearchableActivity extends AppCompatActivity
 
         mEventAdapter.setEvents(resultEventList);
         queryComplete = true;
-    }
-
-    public void showFilterDialog() {
-        FilterDialogFragment.newInstance()
-                .show(getSupportFragmentManager(), FilterDialogFragment.TAG);
     }
 
     @Override
