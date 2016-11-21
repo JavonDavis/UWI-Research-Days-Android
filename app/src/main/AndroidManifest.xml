@@ -39,7 +39,6 @@
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".activities.SearchableActivities" />
-
         </activity>
         <activity
             android:name=".activities.DepartmentActivity"
@@ -107,7 +106,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".activities.miscactivities.SearchableActivity"
             android:label="@string/title_activity_searchable"
@@ -135,6 +133,7 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/client_key" />
 
+        <activity android:name=".activities.miscactivities.TempActivity"></activity>
     </application>
 
 </manifest>
