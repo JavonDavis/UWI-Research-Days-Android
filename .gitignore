@@ -34,8 +34,5 @@ proguard/
 
 # Android Studio
 /gradle
-/build.gradle
 .navigation/
 captures/
-
-**/workspace.xml
