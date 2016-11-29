@@ -124,5 +124,6 @@
     <string name="ogsr_condensed">Office of Graduate Studies</string>
 
     <string name="title_activity_test">TestActivity</string>
-    <string name="coming_soon">Coming Soon: February 1, 2017</string>
+    <string name="coming_soon">Application is currently under construction for Research Days 2017. Coming Soon on Febury 1!</string>
+    <string name="Ok">Ok</string>
 </resources>
