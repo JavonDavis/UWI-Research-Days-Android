@@ -122,4 +122,8 @@
     <string name="faculty_office_of_graduate_studies_and_research">Office of Graduate Studies and Research</string>
     <string name="igds_condensed">Institute for Gender Studies</string>
     <string name="ogsr_condensed">Office of Graduate Studies</string>
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="coming_soon">Application is currently under construction for Research Days 2017. Coming Soon on February 1!</string>
+    <string name="Ok">Ok</string>
 </resources>

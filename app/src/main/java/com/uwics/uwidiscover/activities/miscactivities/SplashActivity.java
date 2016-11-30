@@ -1,13 +1,14 @@
 package com.uwics.uwidiscover.activities.miscactivities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -15,7 +16,6 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
-import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ConnectionHelper;
 import com.uwics.uwidiscover.utils.ParseController;
@@ -122,11 +122,29 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-                finish();
+                application_exit();
+                //startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                //finish();
             }
         }, secondsDelayed * 1000);
     }
+    private void application_exit(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.coming_soon)
+                .setCancelable(false)
+                .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        System.exit(0);
+                    }
+                })
+                .setTitle(Html.fromHtml("<font color='#ff0000'>UWI Research Days </font>"));
+
+
+        AlertDialog alert = builder.create();
+        alert.getWindow().getAttributes().verticalMargin = .1F;
+        alert.show();
+    }
+
 
     @Override
     public void onBackPressed() {
