@@ -90,6 +90,11 @@
         <!--android:icon="@drawable/ic_help_outline_black_24dp"-->
         <!--android:title="@string/string_help_feedback" />-->
         <item
+            android:id="@+id/nav_virt_tour"
+            android:enabled="true"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/virt_tour" />
+        <item
             android:id="@+id/nav_about_uwi"
             android:enabled="true"
             android:icon="@drawable/ic_info_outline_black_24dp"

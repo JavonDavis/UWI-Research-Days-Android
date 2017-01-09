@@ -13,6 +13,12 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -20,6 +26,7 @@ import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
 import java.util.ArrayList;
@@ -73,52 +80,129 @@ public class SponsorActivity extends AppCompatActivity {
     }
 
     private void loadSchedule() {
-        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
-        try {
-            if (!sharedPreferences.getBoolean("from_datastore", false)) {
-                List<Event> objects = query.setLimit(200).find();
-                Event.pinAllInBackground(objects);
-                sharedPreferences.edit().putBoolean("from_datastore", true).apply();
+        //ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
+        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("results");
+        objects.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<Event>> events = new GenericTypeIndicator<List<Event>>() {};
+                schedule = dataSnapshot.getValue(events);
+                ((FireBaseController) getApplicationContext()).setEventList(schedule);
             }
-            query.setLimit(200)
-                    .fromLocalDatastore()
-                    .findInBackground(new FindCallback<Event>() {
-                        @Override
-                        public void done(List<Event> events, ParseException e) {
-                            if (e == null) {
-                                for (Event event : events) {
-                                    schedule.add(event);
-                                }
-                                ((ParseController) getApplicationContext()).setEventList(schedule);
-                                delay();
-                            } else {
-                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SponsorActivity.this);
-                                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
-                                        .setMessage(R.string.string_connection_error_message)
-                                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                SponsorActivity.this.recreate();
-                                            }
-                                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        finish();
-                                        System.exit(0);
-                                    }
-                                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SponsorActivity.this);
+                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+                        .setMessage(R.string.string_connection_error_message)
+                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SponsorActivity.this.recreate();
+                            }
+                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        System.exit(0);
+                    }
+                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                     @Override
                                     public void onDismiss(DialogInterface dialog) {
                                         SponsorActivity.this.recreate();
                                     }
                                 })*/.show().setCanceledOnTouchOutside(false);
-                            }
-                        }
-                    });
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            }
+        });
+            if (!sharedPreferences.getBoolean("from_datastore", false)) {
+//                List<Event> objects = query.setLimit(200).find();
+//                Event.pinAllInBackground(objects);
+                sharedPreferences.edit().putBoolean("from_datastore", true).apply();
+            }
+//            query.setLimit(200)
+//                    .findInBackground(new FindCallback<Event>() {
+//                        @Override
+//                        public void done(List<Event> events, ParseException e) {
+//                            if (e == null) {
+////                                for (Event event : events) {
+////                                    schedule.add(event);
+////                                }
+//                                ((ParseController) getApplicationContext()).setEventList(schedule);
+//                                delay();
+//                            } else {
+//                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SplashActivity.this);
+//                                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+//                                        .setMessage(R.string.string_connection_error_message)
+//                                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                SplashActivity.this.recreate();
+//                                            }
+//                                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        finish();
+//                                        System.exit(0);
+//                                    }
+//                                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                                    @Override
+//                                    public void onDismiss(DialogInterface dialog) {
+//                                        SponsorActivity.this.recreate();
+//                                    }
+//                                })*/.show().setCanceledOnTouchOutside(false);
+//                            }
+//                        }
+//                    });
+
     }
+    //old loadschedule method
+//    private void loadSchedule() {
+//        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
+//        try {
+//            if (!sharedPreferences.getBoolean("from_datastore", false)) {
+//                List<Event> objects = query.setLimit(200).find();
+//                //Event.pinAllInBackground(objects);
+//                sharedPreferences.edit().putBoolean("from_datastore", true).apply();
+//            }
+//            query.setLimit(200)
+//                    .fromLocalDatastore()
+//                    .findInBackground(new FindCallback<Event>() {
+//                        @Override
+//                        public void done(List<Event> events, ParseException e) {
+//                            if (e == null) {
+//                                for (Event event : events) {
+//                                    schedule.add(event);
+//                                }
+//                                ((ParseController) getApplicationContext()).setEventList(schedule);
+//                                delay();
+//                            } else {
+//                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SponsorActivity.this);
+//                                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+//                                        .setMessage(R.string.string_connection_error_message)
+//                                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                SponsorActivity.this.recreate();
+//                                            }
+//                                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        finish();
+//                                        System.exit(0);
+//                                    }
+//                                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                                    @Override
+//                                    public void onDismiss(DialogInterface dialog) {
+//                                        SponsorActivity.this.recreate();
+//                                    }
+//                                })*/.show().setCanceledOnTouchOutside(false);
+//                            }
+//                        }
+//                    });
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void delay() {
         int secondsDelayed = 1;

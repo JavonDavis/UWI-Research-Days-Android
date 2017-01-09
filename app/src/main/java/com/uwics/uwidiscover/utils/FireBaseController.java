@@ -3,11 +3,9 @@ package com.uwics.uwidiscover.utils;
 import android.app.Application;
 import android.provider.Settings;
 
-import com.parse.Parse;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.classes.models.Faculty;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,35 +17,18 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by Howard on 1/22/2016.
- * @author Javon Davis
+ * Created by Rajay Bitter on 1/6/17.
  */
-public class ParseController extends Application {
+
+public class FireBaseController extends Application {
 
     private List<Event> eventList = new ArrayList<>();
-    //need fi fix
+
     @Override
-    public void onCreate() {
-        super.onCreate();
-        Parse.enableLocalDatastore(this);
-        //ParseObject.registerSubclass(Event.class);
-        ParseObject.registerSubclass(Faculty.class);
-        Parse.initialize(this);
-        initializeDeviceId();
+    public void onCreate(){
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
     }
 
-    private void initializeDeviceId() {
-        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        String deviceId = installation.getString("unique_id");
-
-        if ("".equals(deviceId) | deviceId == null) {
-            deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-
-            installation.put("unique_id", deviceId);
-            installation.saveInBackground();
-        }
-    }
-    //can gwan
     public List<Event> getEventList() {
         return eventList;
     }

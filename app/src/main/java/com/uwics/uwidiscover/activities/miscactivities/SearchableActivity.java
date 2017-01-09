@@ -20,6 +20,7 @@ import com.uwics.uwidiscover.classes.adapters.EventAdapter;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.FilterDialogFragment;
 import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class SearchableActivity extends AppCompatActivity
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        eventList = ((ParseController) getApplicationContext()).getEventList();
+        eventList = ((FireBaseController) getApplicationContext()).getEventList();
         ButterKnife.bind(this);
         setupViews();
         handleIntent(getIntent());

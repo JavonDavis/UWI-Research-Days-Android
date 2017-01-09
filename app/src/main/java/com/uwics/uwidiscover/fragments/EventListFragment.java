@@ -19,6 +19,7 @@ import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +77,7 @@ public class EventListFragment extends Fragment {
             image.setAlpha(60);
 
         dayContainer = (LinearLayout) rootView.findViewById(R.id.day_container);
-        schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
+        schedule = ((FireBaseController) getActivity().getApplicationContext()).getEventList();
         if (hasFilter) {
             getFilteredSchedule();
         } else if (hasFaculty) {
@@ -237,12 +238,12 @@ public class EventListFragment extends Fragment {
 
             if (venue.toLowerCase().contains(location)) {
                 event.setFacultyTag(tag);
-                event.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Log.e("Saved:", event.getType());
-                    }
-                });
+//                event.saveInBackground(new SaveCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        Log.e("Saved:", event.getType());
+//                    }
+//                });
                 break;
             }
         }

@@ -17,6 +17,7 @@ import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.EventDialogFragment;
 import com.uwics.uwidiscover.fragments.EventListFragment;
 import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,9 +32,9 @@ import java.util.Locale;
 public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
     // Calendar API has Jan starting @ 0
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 17);
-    private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
-    private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
+    private final static Calendar DAY_ONE = new GregorianCalendar(2017, 1, 1);
+    private final static Calendar DAY_TWO = new GregorianCalendar(2017, 1, 2);
+    private final static Calendar DAY_THREE = new GregorianCalendar(2017, 1, 3);
 
     private LinearLayout dayOneContainer;
     private LinearLayout dayTwoContainer;
@@ -90,7 +91,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getURDSchedule() {
-        schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
+        schedule = ((FireBaseController) getActivity().getApplicationContext()).getEventList();
         onScheduleLoaded();
     }
 
@@ -101,7 +102,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
         for (final Event event : schedule) {
             switch (event.getDate()) {
-                case "17/02/2016":
+                case "01/02/2017":
                     if (dayOneContainer.getChildCount() < limit) {
                         view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item, null);
                         scheduleItem = new ScheduleItem(view);
@@ -131,7 +132,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                         dayOneContainer.addView(view);
                     }
                     break;
-                case "18/02/2016":
+                case "02/02/2017":
                     if (dayTwoContainer.getChildCount() < limit) {
                         view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item, null);
                         scheduleItem = new ScheduleItem(view);
@@ -162,7 +163,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                         dayTwoContainer.addView(view);
                     }
                     break;
-                case "19/02/2016":
+                case "03/02/2017":
                     if (dayThreeContainer.getChildCount() < limit) {
                         view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item, null);
                         scheduleItem = new ScheduleItem(view);
@@ -210,8 +211,8 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.day_one_view_list_button:
                 bundle = new Bundle();
-                bundle.putString("day", "17/02/2016");
-                bundle.putString("wDay", "Feb 17, 2016");
+                bundle.putString("day", "01/02/2017");
+                bundle.putString("wDay", "Feb 1, 2017");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()
@@ -220,8 +221,8 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.day_two_view_list_button:
                 bundle = new Bundle();
-                bundle.putString("day", "18/02/2016");
-                bundle.putString("wDay", "Feb 18, 2016");
+                bundle.putString("day", "18/02/2017");
+                bundle.putString("wDay", "Feb 2, 2017");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()
@@ -230,8 +231,8 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.day_three_view_list_button:
                 bundle = new Bundle();
-                bundle.putString("day", "19/02/2016");
-                bundle.putString("wDay", "Feb 19, 2016");
+                bundle.putString("day", "03/02/2017");
+                bundle.putString("wDay", "Feb 3, 2017");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction()

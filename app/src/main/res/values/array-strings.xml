@@ -2,9 +2,9 @@
 <resources>
 
     <string-array name="array_research_days">
-        <item>WED FEB 17, 2016</item>
-        <item>THU FEB 18, 2016</item>
-        <item>FRI FEB 19, 2016</item>
+        <item>MON FEB 01, 2017</item>
+        <item>TUE FEB 02, 2017</item>
+        <item>WED FEB 03, 2017</item>
     </string-array>
 
     <string-array name="array_stream_channels">
