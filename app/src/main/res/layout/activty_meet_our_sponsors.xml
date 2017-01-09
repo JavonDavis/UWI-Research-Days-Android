@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".activities.MeetOurSponsorsActivity">
+
+    <ImageView
+        android:id="@+id/vision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="openSponsorLinks"
+        android:src="@drawable/sponsor_vision_2030_banner"
+        android:tag="http://www.vision2030.gov.jm/"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/cfp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/vision"
+        android:layout_toRightOf="@id/vision"
+        android:onClick="openSponsorLinks"
+        android:src="@drawable/sponsor_uwicfptv_banner"
+        android:tag="http://www.uwicfptv.com/"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/jipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/cfp"
+        android:layout_toEndOf="@id/vision"
+        android:layout_toRightOf="@id/vision"
+        android:src="@drawable/sponsor_jipo_banner"
+        android:tag="https://www.jipo.gov.jm/"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/scientific"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/jipo"
+        android:onClick="openSponsorLinks"
+        android:src="@drawable/sponsor_scientific_research_council_banner"
+        android:tag="http://src.gov.jm/"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/cardi"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_below="@id/jipo"
+        android:layout_toEndOf="@id/scientific"
+        android:layout_toRightOf="@id/scientific"
+        android:onClick="openSponsorLinks"
+        android:src="@drawable/sponsor_cardi_banner"
+        android:tag="http://cardi.org/"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/hawkeye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scientific"
+        android:onClick="openSponsorLinks"
+        android:src="@drawable/sponsor_hawkeye_banner"
+        android:tag="https://hawkeyejamaica.com/"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hawkeye"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/arrc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="openSponsorLinks"
+            android:src="@drawable/sponsor_arrc_media_banner"
+            android:tag="http://arrc.media/"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/epic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="openSponsorLinks"
+            android:src="@drawable/sponsor_epic_technologies_banner"
+            android:tag="http://etechja.com/site/"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+</RelativeLayout>

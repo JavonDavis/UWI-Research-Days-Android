@@ -1,0 +1,89 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:listDivider">@color/colorDivider</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.HumEd">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryHumEd</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkHumEd</item>
+        <item name="colorAccent">@color/colorAccentHumEd</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextHumEd</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryTextHumEd</item>
+        <item name="android:listDivider">@color/colorDividerHumEd</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.Law">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryLaw</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLaw</item>
+        <item name="colorAccent">@color/colorAccentLaw</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextLaw</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryTextLaw</item>
+        <item name="android:listDivider">@color/colorDividerLaw</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.MedSci">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimaryMedSci</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkMedSci</item>
+        <item name="colorAccent">@color/colorAccentMedSci</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextMedSci</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryTextMedSci</item>
+        <item name="android:listDivider">@color/colorDividerMedSci</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.SciTech">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimarySciTech</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkSciTech</item>
+        <item name="colorAccent">@color/colorAccentSciTech</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextSciTech</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryTextSciTech</item>
+        <item name="android:listDivider">@color/colorDividerSciTech</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.SoSci">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimarySoSci</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkSoSci</item>
+        <item name="colorAccent">@color/colorAccentSoSci</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextSoSci</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryTextSoSci</item>
+        <item name="android:listDivider">@color/colorDividerSoSci</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+</resources>

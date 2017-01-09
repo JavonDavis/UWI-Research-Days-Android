@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "118945950971",
+    "firebase_url": "https://uwi-research-days-android.firebaseio.com",
+    "project_id": "uwi-research-days-android",
+    "storage_bucket": "uwi-research-days-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118945950971:android:5229f30983eba048",
+        "android_client_info": {
+          "package_name": "com.uwics.uwidiscover"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118945950971-4ko88sle8158o7tjtt4925gm50e2ba3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uwics.uwidiscover",
+            "certificate_hash": "6DCC7B1AE58F31339A2C265612638B2A53B75B18"
+          }
+        },
+        {
+          "client_id": "118945950971-muhfaf3qnj56li4guu2hitqpstd2g7dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVfWb1_ySGIGn0MDw0hQLzu3Sxtb64DrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118945950971-muhfaf3qnj56li4guu2hitqpstd2g7dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118945950971:android:f9a37f30206b8b39",
+        "android_client_info": {
+          "package_name": "com.asd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118945950971-muhfaf3qnj56li4guu2hitqpstd2g7dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVfWb1_ySGIGn0MDw0hQLzu3Sxtb64DrE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

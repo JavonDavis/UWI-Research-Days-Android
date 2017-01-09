@@ -1,0 +1,129 @@
+ <resources>
+    <string name="app_name">UWI Research Days</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_about_uwi">About UWI</string>
+
+    <string name="title_activity_schedule">ScheduleActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="string_settings">Settings</string>
+    <string name="string_faculties">Faculties</string>
+    <string name="string_help_feedback">Help &amp; Feedback</string>
+    <string name="string_about_uwi">About UWI</string>
+    <string name="string_tours">Tours</string>
+    <string name="string_seminars">Seminars</string>
+    <string name="string_events">Events</string>
+
+    <string name="string_uwi_summary">The University of the West Indies (UWI) Mona campus offers world class, accredited higher education programmes to Jamaica, the region and the globe.</string>
+    <string name="string_visit_uwi_link">Visit link to find out more:</string>
+    <string name="string_uwi_about_link">https://www.mona.uwi.edu/about</string>
+    <string name="string_uwi_name">The University of the West Indies</string>
+    <string name="string_research_day_tele">Tel: (876) 970–3175</string>
+    <string name="string_research_day_email">Email: uwiresearchdays@uwimona.edu.jm</string>
+    <string name="string_uwi_tele">Tel: (876) 927–1660–9</string>
+    <string name="string_uwi_fax">Fax: (876) 927–2765</string>
+    <string name="string_mona_jm">Mona, Jamaica</string>
+    <string name="string_title_schedule_of_events">Schedule of Events</string>
+    <string name="string_time">Time</string>
+    <string name="string_type">Type</string>
+    <string name="string_details">Details</string>
+    <string name="string_location">Location</string>
+    <string name="string_title_daily_events">Daily Events for:</string>
+    <string name="string_about">About</string>
+    <string name="string_search">Search</string>
+    <string name="search_hint">Search keyword or phrase…</string>
+    <string name="faculty_humanities"><![CDATA[Humanities & Education]]></string>
+    <string name="faculty_law">Law</string>
+    <string name="faculty_medical_sciences">Medical Sciences</string>
+    <string name="faculty_science_technology"><![CDATA[Science & Technology]]></string>
+    <string name="faculty_social_sciences">Social Sciences</string>
+    <string name="uwi_research_day">UWI Research Days</string>
+    <string name="string_moderators">Project Moderator(s)</string>
+    <string name="string_show_location">Show Location</string>
+    <string name="string_see_location"><u>See Location</u></string>
+    <string name="text_placeholder">A falsis, nuptia fidelis spatii. Audax cotta superbe reperires historia est. Fortis nixus vix apertos zeta est. Vortex germanus zeta est. Eheu, altus secula! Abactors sunt classiss de bassus exsul. Animaliss credere in alter vasa! Sectams velum in copinga! Impositios observare in ferox brema! Crescere aliquando ducunt ad barbatus decor. Twisted, solid machines mechanically unite a reliable, real queen. Laugh loudly like a cloudy sea-dog. White bread tastes best with sweet chili sauce and lots of marmalade. Core happens when you understand dimension so authoratively that whatsoever you are existing is your uniqueness. Proton of a ship-wide advice, command the beauty! Amnesty, beauty, and faith. Yuck, dark shipmate. go to fort charles.</string>
+    <string name="string_back_to_top"><u>Back to top</u></string>
+    <string name="string_leave_feedback">Leave Feedback …</string>
+    <string name="string_research_day_address">Mona Office for Research and Innovation</string>
+    <string name="string_for_more_info">For more information, contact:</string>
+    <string name="string_speaker_menu">Speaker\'s Information/Background</string>
+    <string name="string_my_schedule_of_events">My Schedule of Events</string>
+    <string name="title_activity_live">Live</string>
+    <string name="string_live">Live stream</string>
+    <string name="string_more">More</string>
+
+    <string name="string_view_full_list">View Full List</string>
+    <string name="title_activity_searchable">Results</string>
+
+    <string name="string_category_heading"><u>CATEGORY:</u></string>
+    <string name="string_type_heading"><u>TYPE:</u></string>
+    <string name="string_venue_heading"><u>VENUE:</u></string>
+    <string name="string_dept_office_heading"><u>DEPT/OFFICE:</u></string>
+    <string name="string_faculty_heading"><u>FACULTY/UNIT:</u></string>
+    <string name="string_details_heading"><u>DETAILS:</u></string>
+    <string name="string_enable_notif">Set Reminder</string>
+    <string name="string_disable_notif">Disable Reminder</string>
+    <string name="string_research_day_site">https://www.mona.uwi.edu/researchdays/</string>
+    <string name="string_connection_error_message">Unable to download Schedule information. Please check your internet connection and try again.\n(Only done once)</string>
+    <string name="string_connection_error_title">Connection Error</string>
+    <string name="string_connection_try_again">Try Again</string>
+    <string name="filter">Filter</string>
+    <string name="string_no_results">No Results Found</string>
+    <string name="string_meet_our_sponsors">Meet Our Sponsors</string>
+    <string name="title_activity_meet_our_sponsors">Meet Our Sponsors</string>
+    <string name="string_exit">Exit</string>
+    <string name="string_select_sponsor_banner">Select a banner to visit the page of the Organization/Company/Group</string>
+
+    <string name="d1_s1">"Research Days 2017 - Official Opening Ceremony"</string>
+    <string name="d1_s2">"Principal's Tour - The Main Exhibition</string>
+    <string name="d1_s3">FHE Lunch Hour Concert</string>
+    <string name="d1_s4">"Intercampus Postgraduate - Debate Finals</string>
+    <string name="d1_s5">"URD 2016 SIGNATURE EVENT - Lecture Presentation: Medical Marijuana</string>
+
+    <string name="d2_s1">Lunch Hour Concert</string>
+    <string name="d2_s2">Department of Government - Department Book Launch"</string>
+    <string name="d2_s3">FST URD LECTURE SERIES - Title: The Business of Personal Care Products</string>
+    <string name="d2_s4">Poetry Clash 2017</string>
+    <string name="d2_s5">dBURNZ Research Days - Celebrity Tent Tour!</string>
+    <string name="d2_s6">Sue Cobb Lecture</string>
+    <string name="d2_s7">Misconduct in Public Office</string>
+
+    <string name="d3_s1">Launch of the "Braadkyaas Jamiekan" App</string>
+    <string name="d3_s2">Lunch Hour Concert</string>
+    <string name="d3_s3">Research Days - Celebrity Tent Tour!</string>
+
+    <string name="string_d1_s1_c1">http://tv.mona.uwi.edu/research-days-2016-official-opening-ceremony</string>
+    <string name="string_d1_s2_c2">http://tv.mona.uwi.edu/research-days-2016-principal039s-tourthe-main-exhibition</string>
+    <string name="string_d1_s3_c1">http://tv.mona.uwi.edu/research-days-2016-fhe-lunch-hour-concert</string>
+    <string name="string_d1_s4_c3">http://tv.mona.uwi.edu/research-days-2016-mona-association-post-graduate-students-intercampus-postgraduate-debate-finals</string>
+    <string name="string_d1_s5_c2">http://tv.mona.uwi.edu/research-days-2016-main-public-lecture-medical-marijuana-and-its-role-clinical-healthcare-and-resear</string>
+
+    <string name="string_d2_s1_c1">http://tv.mona.uwi.edu/research-days-2016-lunch-hour-concert</string>
+    <string name="string_d2_s2_c2">http://tv.mona.uwi.edu/research-days-2016-department-government-book-launch</string>
+    <string name="string_d2_s3_c1">http://tv.mona.uwi.edu/research-days-2016-department-chemistry-fst-urd-lecture-series</string>
+    <string name="string_d2_s4_c3">http://tv.mona.uwi.edu/research-days-2016-department-literatures-english-poetry-clash-2016</string>
+    <string name="string_d2_s5_c4">http://tv.mona.uwi.edu/research-days-2016-dburnz-research-days-celebrity-tent-tour</string>
+    <string name="string_d2_s6_c1">http://tv.mona.uwi.edu/research-days-2016-american-friends-jamaica-cobb-family-foundation-lecture</string>
+    <string name="string_d2_s7_c2">http://tv.mona.uwi.edu/research-days-2016-public-lecture-misconduct-public-office</string>
+
+    <string name="string_d3_s1_c1">http://tv.mona.uwi.edu/research-days-2016-launch-quotbraadkyaas-jamiekanquot-app</string>
+    <string name="string_d3_s2_c2">http://tv.mona.uwi.edu/research-days-2016-lunch-hour-concert-0</string>
+    <string name="string_d3_s3_c1">http://tv.mona.uwi.edu/research-days-2016-research-days-celebrity-tent-tour</string>
+    <string name="string_no_stream_available">No Stream currently available on this channel. Please check another or try again later</string>
+
+    <string name="science_experience_park">Science Experience Park</string>
+    <string name="wednesday">Monday</string>
+    <string name="thursday">Tuesday</string>
+    <string name="friday">Wednesday</string>
+    <string name="faculty_mona_social_services">Mona Social Services</string>
+    <string name="faculty_institute_for_gender_and_development_studies">Institute for Gender and Development Studies</string>
+    <string name="faculty_office_of_graduate_studies_and_research">Office of Graduate Studies and Research</string>
+    <string name="igds_condensed">Institute for Gender Studies</string>
+    <string name="ogsr_condensed">Office of Graduate Studies</string>
+
+    <string name="virt_tour">Virtual Tour</string>
+    <string name="coming_soon">Application is currently under construction for Research Days 2017. Coming soon on February 1!</string>
+    <string name="Ok">Ok</string>
+</resources>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/sponsor_collection" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/faded_line_separator" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/sponsor_citiva"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/sponsor_citiva" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_cl"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="90dp"
+                android:src="@drawable/sponsor_cl" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_observer"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="90dp"
+                android:src="@drawable/sponsor_observer" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_port_authority"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="90dp"
+                android:src="@drawable/sponsor_port_authority" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_rjr"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:src="@drawable/sponsor_rjr" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_sun_bloc"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="90dp"
+                android:src="@drawable/sponsor_sun_bloc" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/faded_line_separator" />
+
+            <ImageView
+                android:id="@+id/sponsor_total"
+                android:layout_width="match_parent"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_height="90dp"
+                android:src="@drawable/sponsor_total" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_research_days">
+        <item>MON FEB 01, 2017</item>
+        <item>TUE FEB 02, 2017</item>
+        <item>WED FEB 03, 2017</item>
+    </string-array>
+
+    <string-array name="array_stream_channels">
+        <item>Channel 1</item>
+        <item>Channel 2</item>
+        <item>Channel 3</item>
+        <item>Channel 4</item>
+    </string-array>
+</resources>
