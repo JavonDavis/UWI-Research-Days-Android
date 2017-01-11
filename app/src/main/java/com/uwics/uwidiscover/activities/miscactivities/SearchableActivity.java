@@ -19,7 +19,6 @@ import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.classes.adapters.EventAdapter;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.FilterDialogFragment;
-import com.uwics.uwidiscover.utils.ParseController;
 import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.util.ArrayList;

@@ -67,13 +67,13 @@ public class FilterDialogFragment extends DialogFragment {
                             filterValues.put("end_time", endTime);
 
                         if (checkBoxWednesday.isChecked())
-                            filterValues.put("wednesday", "18/2/2016");
+                            filterValues.put("monday", "1/2/2017");
 
                         if (checkBoxThursday.isChecked())
-                            filterValues.put("thursday", "19/2/2016");
+                            filterValues.put("tuesday", "2/2/2017");
 
                         if (checkBoxFriday.isChecked())
-                            filterValues.put("friday", "20/2/2016");
+                            filterValues.put("wednesday", "3/2/2017");
 
                         mListener.onDialogPositiveClick(FilterDialogFragment.this, filterValues);
                     }

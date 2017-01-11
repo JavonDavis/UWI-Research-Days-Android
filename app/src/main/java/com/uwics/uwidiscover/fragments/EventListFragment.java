@@ -12,13 +12,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.parse.ParseException;
-import com.parse.SaveCallback;
+
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
 import com.uwics.uwidiscover.classes.models.Event;
-import com.uwics.uwidiscover.utils.ParseController;
 import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.util.ArrayList;

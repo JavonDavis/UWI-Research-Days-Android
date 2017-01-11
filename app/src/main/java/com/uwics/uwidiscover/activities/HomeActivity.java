@@ -22,11 +22,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.miscactivities.FSTSponsorFragment;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
@@ -66,36 +61,36 @@ public class HomeActivity extends AppCompatActivity
 //        initialParseRequests();
     }
 
-    private void initialParseRequests() {
-        ParseQuery<Faculty> localQuery = ParseQuery.getQuery(Faculty.class);
-
-        localQuery.fromLocalDatastore();
-        localQuery.getFirstInBackground(new GetCallback<Faculty>() {
-            @Override
-            public void done(Faculty faculty, ParseException e) {
-                if (e == null) {
-                    // no error
-                    if (faculty == null) {
-                        ParseQuery<Faculty> query = ParseQuery.getQuery(Faculty.class);
-
-                        query.findInBackground(new FindCallback<Faculty>() {
-                            @Override
-                            public void done(List<Faculty> faculties, ParseException e) {
-                                if (e == null) {
-                                    Toast.makeText(HomeActivity.this, faculties.get(0).getName(), Toast.LENGTH_SHORT).show();
-                                    ParseObject.pinAllInBackground(faculties);
-                                }
-                            }
-                        });
-                    }
-                } else {
-                    Log.wtf(HomeActivity.class.getName(), "Error: " + e.getMessage());
-                }
-            }
-        });
-        // pin all the faculties in the background for the initial loading of the app
-        // so we have a reference to them
-    }
+//    private void initialParseRequests() {
+//        ParseQuery<Faculty> localQuery = ParseQuery.getQuery(Faculty.class);
+//
+//        localQuery.fromLocalDatastore();
+//        localQuery.getFirstInBackground(new GetCallback<Faculty>() {
+//            @Override
+//            public void done(Faculty faculty, ParseException e) {
+//                if (e == null) {
+//                    // no error
+//                    if (faculty == null) {
+//                        ParseQuery<Faculty> query = ParseQuery.getQuery(Faculty.class);
+//
+//                        query.findInBackground(new FindCallback<Faculty>() {
+//                            @Override
+//                            public void done(List<Faculty> faculties, ParseException e) {
+//                                if (e == null) {
+//                                    Toast.makeText(HomeActivity.this, faculties.get(0).getName(), Toast.LENGTH_SHORT).show();
+//                                    ParseObject.pinAllInBackground(faculties);
+//                                }
+//                            }
+//                        });
+//                    }
+//                } else {
+//                    Log.wtf(HomeActivity.class.getName(), "Error: " + e.getMessage());
+//                }
+//            }
+//        });
+//        // pin all the faculties in the background for the initial loading of the app
+//        // so we have a reference to them
+//    }
 
     private void setupNavDrawer() {
         if (getSupportActionBar() != null) {
@@ -335,7 +330,7 @@ public class HomeActivity extends AppCompatActivity
     public interface Tags {
         String PARK = "science_experience_park";
         String HUMANITIES = "fhe";
-        String LAW = "law";
+        String LAW = "fol";
         String MEDICAL_SCIENCES = "fms";
         String SOCIAL_SCIENCES = "fss";
         String SCIENCE_TECHNOLOGY = "fst";

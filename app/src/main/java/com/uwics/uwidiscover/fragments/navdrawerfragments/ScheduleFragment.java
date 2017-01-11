@@ -16,7 +16,6 @@ import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.fragments.EventDialogFragment;
 import com.uwics.uwidiscover.fragments.EventListFragment;
-import com.uwics.uwidiscover.utils.ParseController;
 import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.text.SimpleDateFormat;

@@ -19,14 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
+
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ConnectionHelper;
-import com.uwics.uwidiscover.utils.ParseController;
 import com.uwics.uwidiscover.utils.FireBaseController;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
@@ -81,7 +78,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void loadSchedule() {
         //ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
-        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("results");
+        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("urdschedule").child("results");
         objects.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
