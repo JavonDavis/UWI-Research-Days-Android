@@ -14,24 +14,21 @@ public class Event {
     private String venue;
     private String type;
     private String time;
-    private String end_time = "null";
-    private String start_time = "null";
+    private String end_time;
+    private String start_time;
     private String coordinator;
     private String category;
     private String department;
 
-    public Event(String date, String details, String faculty, String venue, String type, String start_time, String coordinator, String department){
+    public Event(String date, String details, String faculty, String venue, String type, String time, String coordinator, String department){
         this.date = date;
         this.details = details;
         this.faculty = faculty;
         this.venue = venue;
         this.type = type;
-        this.time = start_time;
-        //this.end_time = end_time;
+        this.time = time;
         this.coordinator = coordinator;
         this.department = department;
-//        this.start_time = this.date; //should fix that
-//        this.end_time = this.time;
     }
 
     public Event(){
@@ -79,6 +76,8 @@ public class Event {
     }
 
     public String getStartTime() {
+        String[] result = time.split("\\-+");
+        start_time = result[0];
         return start_time;
     }
 
@@ -87,6 +86,8 @@ public class Event {
     }
 
     public String getEndTime() {
+        String[] result = time.split("\\-+");
+        end_time = result[1];
         return end_time;
     }
 
@@ -116,5 +117,13 @@ public class Event {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -55,7 +55,7 @@ public class FireBaseController extends Application {
                 try {
                     return format.parse(lhs.getStartTime()).compareTo(format.parse(rhs.getStartTime()));
                 } catch (ParseException e) {
-                    return -1;
+                    return 0;
                 }
             }
         });

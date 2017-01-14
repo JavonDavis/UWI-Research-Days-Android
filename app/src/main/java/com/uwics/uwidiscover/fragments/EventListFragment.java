@@ -118,6 +118,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
@@ -158,6 +159,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
@@ -212,6 +214,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");

@@ -220,7 +220,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.day_two_view_list_button:
                 bundle = new Bundle();
-                bundle.putString("day", "18/02/2017");
+                bundle.putString("day", "02/02/2017");
                 bundle.putString("wDay", "Feb 2, 2017");
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);

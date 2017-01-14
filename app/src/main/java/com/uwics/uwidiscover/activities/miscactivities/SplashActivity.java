@@ -78,7 +78,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void loadSchedule() {
         //ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
-        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("urdschedule").child("results");
+        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("urdschedule");
         objects.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
