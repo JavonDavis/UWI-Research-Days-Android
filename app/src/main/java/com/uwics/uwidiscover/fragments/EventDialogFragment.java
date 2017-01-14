@@ -46,7 +46,7 @@ public class EventDialogFragment extends DialogFragment {
         TextView eventEndTimeText = (TextView) rootView.findViewById(R.id.event_end_time);
         //TextView eventDateText = (TextView) rootView.findViewById(R.id.event_date);
         //TextView eventDepartmentText = (TextView) rootView.findViewById(R.id.event_dept);
-        TextView eventDetailsText = (TextView) rootView.findViewById(R.id.event_details);
+        TextView eventDetailsText = (TextView) rootView.findViewById(R.id.event_details) ;
         //TextView eventFacultyText = (TextView) rootView.findViewById(R.id.event_faculty);
         TextView eventVenueText = (TextView) rootView.findViewById(R.id.event_venue);
         TextView eventTypeText = (TextView) rootView.findViewById(R.id.event_type);
