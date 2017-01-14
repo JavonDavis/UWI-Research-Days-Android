@@ -44,7 +44,7 @@ public class Event {
     }
 
     public String getDetails() {
-        return details + "\n" + date;
+        return details;
     }
 
     public String getFaculty() { return faculty; }
