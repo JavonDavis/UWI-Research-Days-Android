@@ -243,14 +243,15 @@ public class HomeActivity extends AppCompatActivity
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.faculty_mona_social_services), eventListFragment);
                 break;
-            case R.id.nav_fac_ogsr:
+            //GRADUATE STUDIES NOT IN SCHEDULE PROVIDED - A. Vidal - 14/01/2017
+            /*case R.id.nav_fac_ogsr:
                 bundle = new Bundle();
                 bundle.putString("faculty", Tags.OFFICE_GRADUATE_STUDIES);
                 bundle.putString("wDay",getString(R.string.faculty_office_of_graduate_studies_and_research));
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.faculty_office_of_graduate_studies_and_research), eventListFragment);
-                break;
+                break;*/
             case R.id.nav_seminars:
                 bundle = new Bundle();
                 bundle.putString("filter", Filters.SEMINAR);
@@ -283,6 +284,13 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_about_uwi:
                 startActivity(new Intent(this, AboutUWIActivity.class));
                 break;
+            default:
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.OTHER_FACULTIES);
+                bundle.putString("wDay",getString(R.string.faculty_other));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_other), eventListFragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -336,7 +344,8 @@ public class HomeActivity extends AppCompatActivity
         String SCIENCE_TECHNOLOGY = "fst";
         String MONA_SOCIAL_SERVICES = "mss";
         String INSTITUTE_FOR_GENDER_STUDIES = "igds";
-        String OFFICE_GRADUATE_STUDIES = "ogsr";
+        //String OFFICE_GRADUATE_STUDIES = "ogsr"; //GRADUATE STUDIES NOT IN SCHEDULE PROVIDED - A. Vidal - 14/01/2017
+        String OTHER_FACULTIES = "urd ctee | philip sh | afj/ cobbs | wjc | uwi harp | instit crim just | place serv | guild | capri";
     }
 
     public interface Filters

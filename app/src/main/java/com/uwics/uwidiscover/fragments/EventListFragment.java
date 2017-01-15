@@ -97,7 +97,7 @@ public class EventListFragment extends Fragment {
                 if (faculty.equals("fst")) {
                     ((HomeActivity) getActivity()).setTitle(getString(R.string.faculty_science_technology));
                 }
-                if (event.getFacultyTag().toLowerCase().contains(faculty)) {
+                if (faculty.contains(event.getFacultyTag().toLowerCase())) {
                     view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item_full, null);
                     scheduleItem = new ScheduleItem(view);
 
