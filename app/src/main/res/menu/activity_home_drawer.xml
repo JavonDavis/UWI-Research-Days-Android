@@ -46,9 +46,9 @@
                 <item
                     android:id="@+id/nav_fac_igds"
                     android:title="@string/igds_condensed" />
-                <item
-                    android:id="@+id/nav_fac_ogsr"
-                    android:title="@string/ogsr_condensed" />
+                <!--<item-->
+                    <!--android:id="@+id/nav_fac_ogsr"-->
+                    <!--android:title="@string/ogsr_condensed" />-->
                 <item
                     android:id="@+id/nav_fac_other"
                     android:title="@string/faculty_other" />
@@ -69,6 +69,10 @@
                     android:id="@+id/nav_live"
                     android:enabled="true"
                     android:title="@string/string_live" />
+                <item
+                    android:id="@+id/nav_review"
+                    android:enabled="true"
+                    android:title="@string/review" />
             </group>
         </menu>
     </item>

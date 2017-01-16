@@ -268,6 +268,13 @@ public class HomeActivity extends AppCompatActivity
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.string_tours), eventListFragment);
                 break;
+            case R.id.nav_review:
+//                Toast toast = new Toast(HomeActivity.this);
+//                toast.setText("Coming Soon!");
+//                toast.setDuration(Toast.LENGTH_LONG);
+//                toast.show();
+                Toast.makeText(HomeActivity.this, "Coming Soon!", Toast.LENGTH_LONG).show();
+                break;
             case R.id.nav_live:
                 startActivity(new Intent(this, LiveActivity.class));
                 break;

@@ -1,7 +1,9 @@
 package com.uwics.uwidiscover.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
@@ -25,9 +27,9 @@ import java.util.GregorianCalendar;
 public class LiveActivity extends AppCompatActivity {
 
     private final static Calendar CURRENT_DAY = Calendar.getInstance();
-    private final static Calendar DAY_ONE = new GregorianCalendar(2016, 1, 17);
-    private final static Calendar DAY_TWO = new GregorianCalendar(2016, 1, 18);
-    private final static Calendar DAY_THREE = new GregorianCalendar(2016, 1, 19);
+    private final static Calendar DAY_ONE = new GregorianCalendar(2017, 1, 1);
+    private final static Calendar DAY_TWO = new GregorianCalendar(2017, 1, 2);
+    private final static Calendar DAY_THREE = new GregorianCalendar(2017, 1, 3);
 
     private final static int DAY_ONE_DAY_OF_YEAR = DAY_ONE.get(Calendar.DAY_OF_YEAR);
     private final static int DAY_TWO_DAY_OF_YEAR = DAY_TWO.get(Calendar.DAY_OF_YEAR);
@@ -46,6 +48,7 @@ public class LiveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=Hxy8BZGQ5Jo")));
         setContentView(R.layout.activity_live);
 
         if (getActionBar() != null) {
