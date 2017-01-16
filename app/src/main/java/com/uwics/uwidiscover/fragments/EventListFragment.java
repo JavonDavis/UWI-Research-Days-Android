@@ -12,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.parse.ParseException;
-import com.parse.SaveCallback;
+
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.activities.miscactivities.SponsorActivity;
 import com.uwics.uwidiscover.classes.models.Event;
-import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,7 +75,7 @@ public class EventListFragment extends Fragment {
             image.setAlpha(60);
 
         dayContainer = (LinearLayout) rootView.findViewById(R.id.day_container);
-        schedule = ((ParseController) getActivity().getApplicationContext()).getEventList();
+        schedule = ((FireBaseController) getActivity().getApplicationContext()).getEventList();
         if (hasFilter) {
             getFilteredSchedule();
         } else if (hasFaculty) {
@@ -98,7 +97,7 @@ public class EventListFragment extends Fragment {
                 if (faculty.equals("fst")) {
                     ((HomeActivity) getActivity()).setTitle(getString(R.string.faculty_science_technology));
                 }
-                if (event.getFacultyTag().toLowerCase().contains(faculty)) {
+                if (faculty.contains(event.getFacultyTag().toLowerCase())) {
                     view = getLayoutInflater(getArguments()).inflate(R.layout.schedule_item_full, null);
                     scheduleItem = new ScheduleItem(view);
 
@@ -119,6 +118,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
@@ -159,6 +159,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
@@ -213,6 +214,7 @@ public class EventListFragment extends Fragment {
                             bundle.putString("eventDetails", event.getDetails());
                             bundle.putString("eventVenue", event.getVenue());
                             bundle.putString("eventType", event.getType());
+                            bundle.putString("eventDepartment", event.getDepartment());
 
                             eventDialogFragment.setArguments(bundle);
                             eventDialogFragment.show(getFragmentManager(), "eventDialogFragment");
@@ -237,12 +239,12 @@ public class EventListFragment extends Fragment {
 
             if (venue.toLowerCase().contains(location)) {
                 event.setFacultyTag(tag);
-                event.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Log.e("Saved:", event.getType());
-                    }
-                });
+//                event.saveInBackground(new SaveCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        Log.e("Saved:", event.getType());
+//                    }
+//                });
                 break;
             }
         }

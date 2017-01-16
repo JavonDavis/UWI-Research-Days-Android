@@ -25,6 +25,7 @@ public class EventDialogFragment extends DialogFragment {
     private String eventDate;
     private String eventDetails;
     private String eventVenue;
+    //private String eventDepartment;
 
     @NonNull
     @Override
@@ -35,6 +36,7 @@ public class EventDialogFragment extends DialogFragment {
         eventStartTime = getArguments().getString("eventStartTime");
         eventEndTime = getArguments().getString("eventEndTime");
         eventDate = getArguments().getString("eventDate");
+        String eventDepartment = getArguments().getString("eventDepartment");
         eventDetails = getArguments().getString("eventDetails");
         String eventFaculty = getArguments().getString("eventFaculty");
         eventVenue = getArguments().getString("eventVenue");
@@ -42,15 +44,19 @@ public class EventDialogFragment extends DialogFragment {
 
         TextView eventStartTimeText = (TextView) rootView.findViewById(R.id.event_start_time);
         TextView eventEndTimeText = (TextView) rootView.findViewById(R.id.event_end_time);
-        TextView eventDetailsText = (TextView) rootView.findViewById(R.id.event_details);
-        TextView eventFacultyText = (TextView) rootView.findViewById(R.id.event_faculty);
+        //TextView eventDateText = (TextView) rootView.findViewById(R.id.event_date);
+        //TextView eventDepartmentText = (TextView) rootView.findViewById(R.id.event_dept);
+        TextView eventDetailsText = (TextView) rootView.findViewById(R.id.event_details) ;
+        //TextView eventFacultyText = (TextView) rootView.findViewById(R.id.event_faculty);
         TextView eventVenueText = (TextView) rootView.findViewById(R.id.event_venue);
         TextView eventTypeText = (TextView) rootView.findViewById(R.id.event_type);
 
         eventStartTimeText.setText(eventStartTime);
         eventEndTimeText.setText(eventEndTime);
         eventDetailsText.setText(eventDetails);
-        eventFacultyText.setText(eventFaculty);
+        //eventDateText.setText(eventDate);
+        //eventDepartmentText.setText(eventDepartment);
+        //eventFacultyText.setText(eventFaculty);
         eventVenueText.setText(eventVenue);
         eventTypeText.setText(eventType);
 
@@ -58,13 +64,13 @@ public class EventDialogFragment extends DialogFragment {
         dialogBuilder.setView(rootView);
         if (eventDate != null) {
             switch (eventDate) {
-                case "17/02/2016":
+                case "01/02/2017":
                     dialogBuilder.setTitle("DAY ONE");
                     break;
-                case "18/02/2016":
+                case "02/02/2017":
                     dialogBuilder.setTitle("DAY TWO");
                     break;
-                case "19/02/2016":
+                case "03/02/2017":
                     dialogBuilder.setTitle("DAY THREE");
                     break;
             }

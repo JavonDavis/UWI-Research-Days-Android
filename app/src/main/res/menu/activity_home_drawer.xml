@@ -46,9 +46,12 @@
                 <item
                     android:id="@+id/nav_fac_igds"
                     android:title="@string/igds_condensed" />
+                <!--<item-->
+                    <!--android:id="@+id/nav_fac_ogsr"-->
+                    <!--android:title="@string/ogsr_condensed" />-->
                 <item
-                    android:id="@+id/nav_fac_ogsr"
-                    android:title="@string/ogsr_condensed" />
+                    android:id="@+id/nav_fac_other"
+                    android:title="@string/faculty_other" />
             </group>
         </menu>
     </item>
@@ -66,6 +69,10 @@
                     android:id="@+id/nav_live"
                     android:enabled="true"
                     android:title="@string/string_live" />
+                <item
+                    android:id="@+id/nav_review"
+                    android:enabled="true"
+                    android:title="@string/review" />
             </group>
         </menu>
     </item>
@@ -89,6 +96,11 @@
         <!--android:enabled="false"-->
         <!--android:icon="@drawable/ic_help_outline_black_24dp"-->
         <!--android:title="@string/string_help_feedback" />-->
+        <item
+            android:id="@+id/nav_virt_tour"
+            android:enabled="true"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/virt_tour" />
         <item
             android:id="@+id/nav_about_uwi"
             android:enabled="true"

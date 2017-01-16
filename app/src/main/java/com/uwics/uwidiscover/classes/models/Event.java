@@ -1,64 +1,129 @@
 package com.uwics.uwidiscover.classes.models;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+
 
 /**
  * @author Javon Davis
  *         Created by Javon Davis on 02/02/16.
  */
-@ParseClassName("urdschedule")
-public class Event extends ParseObject {
+public class Event {
+
+    private String date;
+    private String details;
+    private String faculty;
+    private String venue;
+    private String type;
+    private String time;
+    private String end_time;
+    private String start_time;
+    private String coordinator;
+    private String category;
+    private String department;
+
+    public Event(String date, String details, String faculty, String venue, String type, String time, String coordinator, String department){
+        this.date = date;
+        this.details = details;
+        this.faculty = faculty;
+        this.venue = venue;
+        this.type = type;
+        this.time = time;
+        this.coordinator = coordinator;
+        this.department = department;
+    }
+
+    public Event(){
+        //Default constructor required for calls to DataSnapshot.getValue(Post.class)
+    }
 
     public String getDate() {
-        return getString("date");
+        return date;
     }
 
     public void setDate(String date) {
-        put("date", date);
+        this.date = date;
     }
 
     public String getDetails() {
-        return getString("details");
+        return details;
     }
 
-    public String getFacultyTag() { return getString("faculty"); }
+    public String getFaculty() { return faculty; }
 
-    public void setFacultyTag(String tag) { put("faculty", tag); }
+    public void setFaculty(String tag) { this.faculty = tag; }
+
+    public String getFacultyTag() { return faculty; }
+
+    public void setFacultyTag(String tag) { this.faculty = tag; }
 
     public void setDetails(String details) {
-        put("details", details);
+        this.details = details;
     }
 
     public String getVenue() {
-        return getString("venue");
+        return venue;
     }
 
     public void setVenue(String venue) {
-        put("venue", venue);
+        this.venue = venue;
     }
 
     public String getType() {
-        return getString("type");
+        return type;
     }
 
     public void setType(String type) {
-        put("type", type);
+        this.type = type;
     }
 
     public String getStartTime() {
-        return getString("start_time");
+        String[] result = time.split("\\-+");
+        start_time = result[0];
+        return start_time;
     }
 
     public void setStartTime(String startTime) {
-        put("start_time", startTime);
+        this.start_time = startTime;
     }
 
     public String getEndTime() {
-        return getString("end_time");
+        String[] result = time.split("\\-+");
+        end_time = result[1];
+        return end_time;
     }
 
     public void setEndTime(String endTime) {
-        put("end_time", endTime);
+        this.end_time = endTime;
+    }
+
+    public String getCoordinator() {
+        return coordinator;
+    }
+
+    public void setCoordinator(String coordinator) {
+        this.coordinator = coordinator;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

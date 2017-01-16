@@ -1,33 +1,72 @@
 package com.uwics.uwidiscover.classes.models;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
 
 /**
  * Created by shane on 2/14/16.
  */
-@ParseClassName("stream")
-public class Stream extends ParseObject {
+
+public class Stream {
+    private int id;
+    private String name;
+    private String startTime;
+    private String endtime;
+    private String location;
+    private String url;
 
     public Stream(int id, String name, String startTime, String endTime, String location, String url) {
-        put("id", id);
-        put("name", name);
-        put("start_time", startTime);
-        put("end_time", endTime);
-        put("location", location);
-        put("url", url);
+        this.id = id;
+        this.name = name;
+        this.startTime = startTime;
+        this.endtime = endTime;
+        this.location = location;
+        this.url = url;
     }
+
     public int getId() {
-        return getInt("id");
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
-        return getString("name");
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getStartTime() {
-        return getString("start_time");
+        return startTime;
     }
 
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

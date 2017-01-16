@@ -1,29 +1,64 @@
 package com.uwics.uwidiscover.classes.models;
 
-import com.parse.ParseClassName;
-import com.parse.ParseObject;
+
 
 /**
  * Created by Howard on 1/22/2016.
  */
-@ParseClassName("Faculty")
-public class Faculty extends ParseObject {
 
-    public String getName() {
-        return getString("name");
-    }
+public class Faculty {
+
+    private String name;
+    private String dean;
+    private String number;
+    private String email;
 
     public String getDean() {
-        return getString("dean");
+        return dean;
     }
 
-    public String getNumber() {
-        return getString("number");
+    public void setDean(String dean) {
+        this.dean = dean;
     }
 
     public String getEmail() {
-        return getString("email");
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNumber() {
+            return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+    //    public String getName() {
+//        return getString("name");
+//    }
+//
+//    public String getDean() {
+//        return getString("dean");
+//    }
+//
+//    public String getNumber() {
+//        return getString("number");
+//    }
+//
+//    public String getEmail() {
+//        return getString("email");
+//    }
 
 
 //    String id;

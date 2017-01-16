@@ -11,14 +11,20 @@ import android.text.Html;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.content.Intent;
 
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
 import com.uwics.uwidiscover.R;
+import com.uwics.uwidiscover.activities.HomeActivity;
 import com.uwics.uwidiscover.classes.models.Event;
 import com.uwics.uwidiscover.utils.ConnectionHelper;
-import com.uwics.uwidiscover.utils.ParseController;
+import com.uwics.uwidiscover.utils.FireBaseController;
 import com.zl.reik.dilatingdotsprogressbar.DilatingDotsProgressBar;
 
 import java.util.ArrayList;
@@ -71,50 +77,82 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void loadSchedule() {
-        ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
-        try {
-            if (!sharedPreferences.getBoolean("from_datastore", false)) {
-                List<Event> objects = query.setLimit(200).find();
-                Event.pinAllInBackground(objects);
-                sharedPreferences.edit().putBoolean("from_datastore", true).apply();
+        //ParseQuery<Event> query = ParseQuery.getQuery(Event.class);
+        DatabaseReference objects = FirebaseDatabase.getInstance().getReference().child("urdschedule");
+        objects.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<List<Event>> events = new GenericTypeIndicator<List<Event>>() {};
+                schedule = dataSnapshot.getValue(events);
+                ((FireBaseController) getApplicationContext()).setEventList(schedule);
+                delay();
             }
-            query.setLimit(200)
-                    .findInBackground(new FindCallback<Event>() {
-                        @Override
-                        public void done(List<Event> events, ParseException e) {
-                            if (e == null) {
-                                for (Event event : events) {
-                                    schedule.add(event);
-                                }
-                                ((ParseController) getApplicationContext()).setEventList(schedule);
-                                delay();
-                            } else {
-                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SplashActivity.this);
-                                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
-                                        .setMessage(R.string.string_connection_error_message)
-                                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                SplashActivity.this.recreate();
-                                            }
-                                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        finish();
-                                        System.exit(0);
-                                    }
-                                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SplashActivity.this);
+                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+                        .setMessage(R.string.string_connection_error_message)
+                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SplashActivity.this.recreate();
+                            }
+                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        System.exit(0);
+                    }
+                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                     @Override
                                     public void onDismiss(DialogInterface dialog) {
                                         SponsorActivity.this.recreate();
                                     }
                                 })*/.show().setCanceledOnTouchOutside(false);
-                            }
-                        }
-                    });
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            }
+        });
+
+            if (!sharedPreferences.getBoolean("from_datastore", false)) {
+//                List<Event> objects = query.setLimit(200).find();
+//                Event.pinAllInBackground(objects);
+                sharedPreferences.edit().putBoolean("from_datastore", true).apply();
+            }
+//            query.setLimit(200)
+//                    .findInBackground(new FindCallback<Event>() {
+//                        @Override
+//                        public void done(List<Event> events, ParseException e) {
+//                            if (e == null) {
+////                                for (Event event : events) {
+////                                    schedule.add(event);
+////                                }
+//                                ((ParseController) getApplicationContext()).setEventList(schedule);
+//                                delay();
+//                            } else {
+//                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SplashActivity.this);
+//                                dialogBuilder.setTitle(getString(R.string.string_connection_error_title))
+//                                        .setMessage(R.string.string_connection_error_message)
+//                                        .setPositiveButton(R.string.string_connection_try_again, new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                SplashActivity.this.recreate();
+//                                            }
+//                                        }).setNegativeButton(R.string.string_exit, new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        finish();
+//                                        System.exit(0);
+//                                    }
+//                                })/*.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                                    @Override
+//                                    public void onDismiss(DialogInterface dialog) {
+//                                        SponsorActivity.this.recreate();
+//                                    }
+//                                })*/.show().setCanceledOnTouchOutside(false);
+//                            }
+//                        }
+//                    });
+
     }
 
     private void delay() {
@@ -122,29 +160,11 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                application_exit();
-                //startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-                //finish();
+                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                finish();
             }
         }, secondsDelayed * 1000);
     }
-    private void application_exit(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.coming_soon)
-                .setCancelable(false)
-                .setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        System.exit(0);
-                    }
-                })
-                .setTitle(Html.fromHtml("<font color='#ff0000'>UWI Research Days </font>"));
-
-
-        AlertDialog alert = builder.create();
-        alert.getWindow().getAttributes().verticalMargin = .1F;
-        alert.show();
-    }
-
 
     @Override
     public void onBackPressed() {

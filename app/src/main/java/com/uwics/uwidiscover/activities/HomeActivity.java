@@ -22,11 +22,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.uwics.uwidiscover.R;
 import com.uwics.uwidiscover.activities.miscactivities.FSTSponsorFragment;
 import com.uwics.uwidiscover.activities.miscactivities.MyPreferencesActivity;
@@ -66,36 +61,36 @@ public class HomeActivity extends AppCompatActivity
 //        initialParseRequests();
     }
 
-    private void initialParseRequests() {
-        ParseQuery<Faculty> localQuery = ParseQuery.getQuery(Faculty.class);
-
-        localQuery.fromLocalDatastore();
-        localQuery.getFirstInBackground(new GetCallback<Faculty>() {
-            @Override
-            public void done(Faculty faculty, ParseException e) {
-                if (e == null) {
-                    // no error
-                    if (faculty == null) {
-                        ParseQuery<Faculty> query = ParseQuery.getQuery(Faculty.class);
-
-                        query.findInBackground(new FindCallback<Faculty>() {
-                            @Override
-                            public void done(List<Faculty> faculties, ParseException e) {
-                                if (e == null) {
-                                    Toast.makeText(HomeActivity.this, faculties.get(0).getName(), Toast.LENGTH_SHORT).show();
-                                    ParseObject.pinAllInBackground(faculties);
-                                }
-                            }
-                        });
-                    }
-                } else {
-                    Log.wtf(HomeActivity.class.getName(), "Error: " + e.getMessage());
-                }
-            }
-        });
-        // pin all the faculties in the background for the initial loading of the app
-        // so we have a reference to them
-    }
+//    private void initialParseRequests() {
+//        ParseQuery<Faculty> localQuery = ParseQuery.getQuery(Faculty.class);
+//
+//        localQuery.fromLocalDatastore();
+//        localQuery.getFirstInBackground(new GetCallback<Faculty>() {
+//            @Override
+//            public void done(Faculty faculty, ParseException e) {
+//                if (e == null) {
+//                    // no error
+//                    if (faculty == null) {
+//                        ParseQuery<Faculty> query = ParseQuery.getQuery(Faculty.class);
+//
+//                        query.findInBackground(new FindCallback<Faculty>() {
+//                            @Override
+//                            public void done(List<Faculty> faculties, ParseException e) {
+//                                if (e == null) {
+//                                    Toast.makeText(HomeActivity.this, faculties.get(0).getName(), Toast.LENGTH_SHORT).show();
+//                                    ParseObject.pinAllInBackground(faculties);
+//                                }
+//                            }
+//                        });
+//                    }
+//                } else {
+//                    Log.wtf(HomeActivity.class.getName(), "Error: " + e.getMessage());
+//                }
+//            }
+//        });
+//        // pin all the faculties in the background for the initial loading of the app
+//        // so we have a reference to them
+//    }
 
     private void setupNavDrawer() {
         if (getSupportActionBar() != null) {
@@ -248,14 +243,15 @@ public class HomeActivity extends AppCompatActivity
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.faculty_mona_social_services), eventListFragment);
                 break;
-            case R.id.nav_fac_ogsr:
+            //GRADUATE STUDIES NOT IN SCHEDULE PROVIDED - A. Vidal - 14/01/2017
+            /*case R.id.nav_fac_ogsr:
                 bundle = new Bundle();
                 bundle.putString("faculty", Tags.OFFICE_GRADUATE_STUDIES);
                 bundle.putString("wDay",getString(R.string.faculty_office_of_graduate_studies_and_research));
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.faculty_office_of_graduate_studies_and_research), eventListFragment);
-                break;
+                break;*/
             case R.id.nav_seminars:
                 bundle = new Bundle();
                 bundle.putString("filter", Filters.SEMINAR);
@@ -271,6 +267,13 @@ public class HomeActivity extends AppCompatActivity
                 eventListFragment = new EventListFragment();
                 eventListFragment.setArguments(bundle);
                 launchFragment(getString(R.string.string_tours), eventListFragment);
+                break;
+            case R.id.nav_review:
+//                Toast toast = new Toast(HomeActivity.this);
+//                toast.setText("Coming Soon!");
+//                toast.setDuration(Toast.LENGTH_LONG);
+//                toast.show();
+                Toast.makeText(HomeActivity.this, "Coming Soon!", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_live:
                 startActivity(new Intent(this, LiveActivity.class));
@@ -288,6 +291,13 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_about_uwi:
                 startActivity(new Intent(this, AboutUWIActivity.class));
                 break;
+            default:
+                bundle = new Bundle();
+                bundle.putString("faculty", Tags.OTHER_FACULTIES);
+                bundle.putString("wDay",getString(R.string.faculty_other));
+                eventListFragment = new EventListFragment();
+                eventListFragment.setArguments(bundle);
+                launchFragment(getString(R.string.faculty_other), eventListFragment);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -335,13 +345,14 @@ public class HomeActivity extends AppCompatActivity
     public interface Tags {
         String PARK = "science_experience_park";
         String HUMANITIES = "fhe";
-        String LAW = "law";
+        String LAW = "fol";
         String MEDICAL_SCIENCES = "fms";
         String SOCIAL_SCIENCES = "fss";
         String SCIENCE_TECHNOLOGY = "fst";
         String MONA_SOCIAL_SERVICES = "mss";
         String INSTITUTE_FOR_GENDER_STUDIES = "igds";
-        String OFFICE_GRADUATE_STUDIES = "ogsr";
+        //String OFFICE_GRADUATE_STUDIES = "ogsr"; //GRADUATE STUDIES NOT IN SCHEDULE PROVIDED - A. Vidal - 14/01/2017
+        String OTHER_FACULTIES = "urd ctee | philip sh | afj/ cobbs | wjc | uwi harp | instit crim just | place serv | guild | capri";
     }
 
     public interface Filters
